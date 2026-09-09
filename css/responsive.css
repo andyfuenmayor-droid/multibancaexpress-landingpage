@@ -1,0 +1,223 @@
+/* ==========================================================================
+   RESPONSIVE STYLESHEET - OPERADORA SAAS LANDING PAGE (v3.0)
+   ========================================================================== */
+
+.mobile-only-action {
+  display: none;
+}
+
+/* --- Tablet Devices (max-width: 1024px) --- */
+@media screen and (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-badge-container, .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats-row {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-mockup-wrapper {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .feature-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .calculator-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .pricing-card.featured {
+    transform: none;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* --- Mobile Devices (max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero-section {
+    padding: 110px 0 50px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 16px;
+    transform: translateY(-150%);
+    transition: transform var(--transition-smooth);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+  }
+
+  .nav-links.nav-active {
+    transform: translateY(0);
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-only-action {
+    display: block !important;
+  }
+
+  /* Mantener botones visibles y compactos en la barra superior móvil */
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-actions .btn-whatsapp {
+    display: none !important;
+  }
+
+  .nav-actions .nav-crm-btn {
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
+  }
+
+  .nav-actions .nav-reg-btn {
+    display: inline-flex !important;
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
+  }
+
+  .mobile-sticky-bar {
+    display: block;
+  }
+
+  body {
+    padding-bottom: 70px;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .hero-stat-item h3 {
+    justify-content: center;
+  }
+
+  .calculator-card {
+    padding: 24px 20px;
+  }
+
+  .calc-result-panel {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .lead-modal {
+    padding: 28px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: 14px auto 0;
+  }
+
+  .floating-pill {
+    display: none;
+  }
+
+  .toast-container {
+    left: 20px;
+    right: 20px;
+    bottom: 80px;
+  }
+}
+
+/* --- Small Mobile (max-width: 480px) --- */
+@media screen and (max-width: 480px) {
+  .brand-logo-img {
+    height: 28px;
+  }
+
+  .version-badge {
+    display: none;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .features-tabs-container {
+    flex-direction: column;
+  }
+
+  .tab-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card {
+    padding: 30px 20px;
+  }
+}
