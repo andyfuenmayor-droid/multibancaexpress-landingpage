@@ -1,5 +1,5 @@
 /**
- * APP.JS - Lógica interactiva de la Landing Page
+ * APP.JS - Lógica interactiva de la Landing Page Multibanca Express
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('nav-active');
-        mobileMenuBtn.innerHTML = '☰';
+        if (mobileMenuBtn) mobileMenuBtn.innerHTML = '☰';
       });
     });
   }
 
-  // 3. Tab Switcher de Módulos (23 Módulos)
+  // 3. Tab Switcher de Módulos (23 Módulos con Vistas UI)
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
@@ -57,9 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const question = item.querySelector('.faq-question');
     if (question) {
       question.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-        faqItems.forEach(f => f.classList.remove('active'));
+        const isOpen = item.classList.contains('open') || item.classList.contains('active');
+        faqItems.forEach(f => {
+          f.classList.remove('open');
+          f.classList.remove('active');
+        });
         if (!isOpen) {
+          item.classList.add('open');
           item.classList.add('active');
         }
       });

@@ -221,3 +221,31 @@
     padding: 30px 20px;
   }
 }
+
+/* Responsive rules for Ecosystem, Hardware & Matrix Table */
+@media screen and (max-width: 1024px) {
+  .ecosystem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hardware-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .matrix-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ecosystem-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hardware-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .matrix-table {
+    min-width: 580px;
+  }
+}

@@ -1552,3 +1552,445 @@ p {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
+
+/* ==========================================================================
+   ENHANCED MODERN COMPONENTS & VISTAS (MULTIBANCA EXPRESS 2026)
+   ========================================================================== */
+
+/* --- Ecosystem Grid & Cards --- */
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.ecosystem-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.ecosystem-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.ecosystem-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(2, 171, 33, 0.4);
+  background: var(--bg-card-hover);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(2, 171, 33, 0.15);
+}
+
+.ecosystem-card:hover::before {
+  opacity: 1;
+}
+
+.ecosystem-card.featured-eco {
+  border-color: rgba(2, 171, 33, 0.45);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+}
+
+.eco-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.eco-icon {
+  font-size: 1.8rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eco-domain {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--primary-light);
+  background: rgba(2, 171, 33, 0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(2, 171, 33, 0.25);
+  margin-bottom: 12px;
+}
+
+.eco-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.eco-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.eco-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 22px;
+  font-size: 0.82rem;
+  color: var(--text-main);
+}
+
+.eco-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eco-features li span {
+  color: var(--primary-light);
+  font-weight: 700;
+}
+
+.eco-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass-hover);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.eco-link:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+/* --- Hardware Grid --- */
+.hardware-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.hw-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 30px 22px;
+  backdrop-filter: blur(var(--blur-glass));
+  transition: all var(--transition-smooth);
+}
+
+.hw-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(2, 171, 33, 0.4);
+  background: var(--bg-card-hover);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hw-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.hw-card h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hw-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --- Thermal Ticket ESC/POS Mockup --- */
+.thermal-ticket-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.thermal-ticket {
+  width: 100%;
+  max-width: 320px;
+  background: #fdfbf7;
+  color: #1a1a1a;
+  padding: 24px 20px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace, Courier;
+  font-size: 0.78rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.05);
+  border-top: 4px solid #02ab21;
+  position: relative;
+}
+
+.ticket-header {
+  text-align: center;
+  border-bottom: 1px dashed #444;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.ticket-brand {
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.ticket-meta {
+  font-size: 0.72rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.ticket-table {
+  width: 100%;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+
+.ticket-table th {
+  text-align: left;
+  border-bottom: 1px dashed #666;
+  padding-bottom: 4px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.ticket-table td {
+  padding: 4px 0;
+  font-size: 0.75rem;
+}
+
+.ticket-total-row {
+  border-top: 1px dashed #444;
+  border-bottom: 1px solid #1a1a1a;
+  margin-top: 8px;
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.ticket-barcode-area {
+  text-align: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #888;
+}
+
+.ticket-barcode {
+  font-family: monospace;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+
+.ticket-qr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  color: #1b5e20;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* --- Matrix Comparison Table --- */
+.matrix-container {
+  max-width: 1080px;
+  margin: 60px auto 0;
+}
+
+.matrix-table-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+.matrix-table th {
+  padding: 20px 16px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #ffffff;
+  font-weight: 800;
+  border-bottom: 2px solid var(--border-glass);
+}
+
+.matrix-table th.highlight-col {
+  background: rgba(2, 171, 33, 0.15);
+  border-top: 3px solid var(--primary);
+  color: #86efac;
+}
+
+.matrix-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-glass);
+  color: var(--text-main);
+}
+
+.matrix-table tr:last-child td {
+  border-bottom: none;
+}
+
+.matrix-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.matrix-table td.mod-name {
+  text-align: left;
+  font-weight: 600;
+  padding-left: 28px;
+  color: #ffffff;
+}
+
+.matrix-table td.highlight-col {
+  background: rgba(2, 171, 33, 0.05);
+  font-weight: 700;
+}
+
+.matrix-check {
+  color: #22c55e;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.matrix-cross {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.matrix-badge-exclusive {
+  display: inline-block;
+  background: rgba(2, 171, 33, 0.2);
+  border: 1px solid rgba(2, 171, 33, 0.4);
+  color: #4ade80;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+/* --- Calculator Plan Choice Pills --- */
+.calc-plan-pills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.calc-plan-pill {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.calc-plan-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-glass-hover);
+}
+
+.calc-plan-pill input[type="radio"] {
+  display: none;
+}
+
+.calc-plan-pill.active,
+.calc-plan-pill:has(input:checked) {
+  background: rgba(2, 171, 33, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(2, 171, 33, 0.25);
+}
+
+.calc-plan-pill .pill-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #ffffff;
+}
+
+.calc-plan-pill .pill-price {
+  font-size: 0.78rem;
+  color: var(--primary-light);
+  font-weight: 600;
+}
+
+/* FAQ item active compatibility */
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.nav-wa-btn {
+  display: inline-flex;
+}

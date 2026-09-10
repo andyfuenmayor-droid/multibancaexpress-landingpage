@@ -28,7 +28,7 @@ window.openRegistrationModal = (preselectedPlan = 'Profesional', preselectedPoin
   }
 
   if (modalTitle && modalSubtitle && submitBtn) {
-    modalTitle.innerHTML = `📝 Registrarse - <span style="color: #10b981;">${preselectedPlan}</span>`;
+    modalTitle.innerHTML = `📋 Registrarse - <span style="color: #10b981;">${preselectedPlan}</span>`;
     modalSubtitle.innerText = 'Completa tus datos para registrar tu negocio y activar tu acceso de inmediato.';
     submitBtn.innerHTML = '🚀 Completar Registro y Activar en WhatsApp';
   }
@@ -41,6 +41,22 @@ window.openRegistrationModal = (preselectedPlan = 'Profesional', preselectedPoin
 
 window.openDemoModal = (plan = 'Demostración General') => {
   window.openRegistrationModal(plan, 5);
+};
+
+window.goToRegisterForm = (plan = 'Plan Profesional') => {
+  const planSelect = document.getElementById('inpage-lead-plan');
+  if (planSelect) {
+    for (let opt of planSelect.options) {
+      if (opt.text.toLowerCase().includes(plan.toLowerCase()) || opt.value.toLowerCase().includes(plan.toLowerCase())) {
+        planSelect.value = opt.value;
+        break;
+      }
+    }
+  }
+  const regSection = document.getElementById('registro');
+  if (regSection) {
+    regSection.scrollIntoView({ behavior: 'smooth' });
+  }
 };
 
 // Cerrar Modal
@@ -148,70 +164,62 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Mensaje Estructurado para WhatsApp
     const waMessage = 
 `👋 *SOLICITUD DE REGISTRO / PLAN - MULTIBANCA EXPRESS*
-----------------------------------
+
 👤 *Representante:* ${name}
 🏢 *Banca / Operadora:* ${business}
 📱 *WhatsApp:* ${phone}
 📧 *Email:* ${email || 'No especificado'}
-📍 *N° de Agencias/Puntos:* ${numericPoints}
-💎 *Plan Seleccionado:* ${plan}
-📍 *Ubicación:* ${state || 'No especificada'}
-📫 *Dirección:* ${address || 'No especificada'}
-----------------------------------
-_Registro oficial generado desde webapp.multibancaexpress.com_`;
+📍 *Puntos de Venta:* ${numericPoints} agencias
+💎 *Plan de Interés:* ${plan}
+🗺️ *Ubicación:* ${state || 'No especificado'}
+📫 *Dirección:* ${address || 'No especificado'}
 
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = '✅ ¡Registro Completado!';
+_Generado automáticamente desde webapp.multibancaexpress.com_`;
 
-    if (isModal) {
-      window.closeDemoModal();
-      if (modalForm) modalForm.reset();
-    } else {
-      if (inpageForm) inpageForm.reset();
-    }
+    submitBtn.innerHTML = '✅ Expediente Creado';
+    window.showToast('Redirigiendo a WhatsApp para activación...', '📱');
 
     setTimeout(() => {
+      if (isModal) window.closeDemoModal();
+      window.contactWhatsAppDirect(waMessage);
+      submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnText;
-      const url = `https://wa.me/${WHATSAPP_PHONE_DEFAULT}?text=${encodeURIComponent(waMessage)}`;
-      window.open(url, '_blank');
-    }, 800);
+    }, 1200);
   };
 
-  // Manejar envío formulario In-Page
-  if (inpageForm) {
-    inpageForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      processRegistration({
-        name: document.getElementById('inpage-lead-name').value.trim(),
-        business: document.getElementById('inpage-lead-business').value.trim(),
-        phone: document.getElementById('inpage-lead-phone').value.trim(),
-        email: document.getElementById('inpage-lead-email').value.trim(),
-        pointsRaw: document.getElementById('inpage-lead-points').value,
-        plan: document.getElementById('inpage-lead-plan').value,
-        state: document.getElementById('inpage-lead-state').value.trim(),
-        address: document.getElementById('inpage-lead-address').value.trim(),
-        submitBtn: document.getElementById('inpage-submit-btn'),
-        isModal: false
-      });
-    });
-  }
-
-  // Manejar envío formulario Modal
+  // Formulario en Modal
   if (modalForm) {
     modalForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      processRegistration({
-        name: document.getElementById('lead-name').value.trim(),
-        business: document.getElementById('lead-business').value.trim(),
-        phone: document.getElementById('lead-phone').value.trim(),
-        email: document.getElementById('lead-email').value.trim(),
-        pointsRaw: document.getElementById('lead-points').value,
-        plan: document.getElementById('lead-plan').value,
-        state: document.getElementById('lead-state') ? document.getElementById('lead-state').value.trim() : '',
-        address: document.getElementById('lead-address') ? document.getElementById('lead-address').value.trim() : '',
-        submitBtn: document.getElementById('modal-submit-btn'),
-        isModal: true
-      });
+      const name = document.getElementById('lead-name')?.value.trim();
+      const business = document.getElementById('lead-business')?.value.trim();
+      const phone = document.getElementById('lead-phone')?.value.trim();
+      const email = document.getElementById('lead-email')?.value.trim();
+      const pointsRaw = document.getElementById('lead-points')?.value;
+      const plan = document.getElementById('lead-plan')?.value;
+      const state = document.getElementById('lead-state')?.value.trim();
+      const address = document.getElementById('lead-address')?.value.trim();
+      const submitBtn = document.getElementById('modal-submit-btn');
+
+      processRegistration({ name, business, phone, email, pointsRaw, plan, state, address, submitBtn, isModal: true });
+    });
+  }
+
+  // Formulario en Página
+  if (inpageForm) {
+    inpageForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('inpage-lead-name')?.value.trim();
+      const business = document.getElementById('inpage-lead-business')?.value.trim();
+      const phone = document.getElementById('inpage-lead-phone')?.value.trim();
+      const email = document.getElementById('inpage-lead-email')?.value.trim();
+      const pointsRaw = document.getElementById('inpage-lead-points')?.value;
+      const plan = document.getElementById('inpage-lead-plan')?.value;
+      const state = document.getElementById('inpage-lead-state')?.value.trim();
+      const address = document.getElementById('inpage-lead-address')?.value.trim();
+      const submitBtn = document.getElementById('inpage-submit-btn');
+
+      processRegistration({ name, business, phone, email, pointsRaw, plan, state, address, submitBtn, isModal: false });
     });
   }
 });

@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalPrice = document.getElementById('calc-total-price');
   const formulaBreakdown = document.getElementById('calc-formula-breakdown');
   const hireBtn = document.getElementById('calc-hire-btn');
+  const billingToggle = document.getElementById('billing-toggle');
+  const labelMonthly = document.getElementById('label-monthly');
+  const labelAnnual = document.getElementById('label-annual');
 
   // Planes oficiales
   const PLAN_RATES = {
@@ -59,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let finalTotal = isAnnual ? subtotal * 0.85 : subtotal;
 
     if (totalPrice) {
-      totalPrice.textContent = `$${Math.round(finalTotal)}`;
+      totalPrice.innerHTML = `$${Math.round(finalTotal)}<span>/mes</span>`;
     }
 
     if (formulaBreakdown) {
@@ -67,13 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Métricas de Ahorro y ROI
-    // Cuadre manual estimado: ~2.5 horas semanales por agencia (10h al mes)
     const hoursSaved = Math.round(agencias * 9.5);
-    if (savedHours) savedHours.textContent = `${hoursSaved}h / mes`;
+    if (savedHours) savedHours.textContent = `${hoursSaved}h`;
 
-    // Fugas prevenidas (comprobantes bancarios falsos, dobles cobros, descuadres de tasa): ~$28/agencia/mes
     const leakage = Math.round(agencias * 28 + 45);
-    if (leakageSaved) leakageSaved.textContent = `$${leakage.toLocaleString('es-ES')} USD`;
+    if (leakageSaved) leakageSaved.textContent = `$${leakage.toLocaleString('es-ES')}`;
 
     // Configurar botón de contratación directa
     if (hireBtn) {
@@ -95,23 +96,46 @@ document.addEventListener('DOMContentLoaded', () => {
   planRadios.forEach(radio => {
     radio.addEventListener('change', (e) => {
       selectedPlanKey = e.target.value;
+      document.querySelectorAll('.calc-plan-pill').forEach(p => p.classList.remove('active'));
+      const parentPill = radio.closest('.calc-plan-pill');
+      if (parentPill) parentPill.classList.add('active');
       calculateROI();
     });
   });
+
+  if (billingToggle) {
+    billingToggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      billingToggle.classList.toggle('annual', isAnnual);
+      if (labelMonthly) labelMonthly.classList.toggle('active', !isAnnual);
+      if (labelAnnual) labelAnnual.classList.toggle('active', isAnnual);
+
+      // Actualizar precios de las tarjetas principales
+      const priceBasico = document.getElementById('price-basico');
+      const pricePro = document.getElementById('price-pro');
+      const priceElite = document.getElementById('price-elite');
+
+      if (priceBasico) priceBasico.innerHTML = isAnnual ? `$128<span>/mes</span>` : `$150<span>/mes</span>`;
+      if (pricePro) pricePro.innerHTML = isAnnual ? `$213<span>/mes</span>` : `$250<span>/mes</span>`;
+      if (priceElite) priceElite.innerHTML = isAnnual ? `$425<span>/mes</span>` : `$500<span>/mes</span>`;
+
+      calculateROI();
+    });
+  }
 
   window.setCalculatorPlan = (planKey) => {
     if (PLAN_RATES[planKey]) {
       selectedPlanKey = planKey;
       const targetRadio = document.querySelector(`input[name="calc-plan-choice"][value="${planKey}"]`);
-      if (targetRadio) targetRadio.checked = true;
+      if (targetRadio) {
+        targetRadio.checked = true;
+        document.querySelectorAll('.calc-plan-pill').forEach(p => p.classList.remove('active'));
+        const parentPill = targetRadio.closest('.calc-plan-pill');
+        if (parentPill) parentPill.classList.add('active');
+      }
       calculateROI();
     }
   };
 
-  window.setCalculatorAnnual = (annual) => {
-    isAnnual = annual;
-    calculateROI();
-  };
-
-  calculateROI(); // Iniciar
+  calculateROI();
 });
