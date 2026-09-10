@@ -16,7 +16,7 @@ Sitio web comercial oficial y portal de captación de suscriptores para la plata
    - **Profesional ⭐**: $250 / mes (+ $8 por agencia)
    - **Elite Enterprise**: $500 / mes (+ $12 por agencia)
 2. **Formulario Físico de Registro (`#registro`)**:
-   - Captura inmediata de expedientes de operadoras y bancas.
+   - Captura inmediata de expedientes de comercializadoras.
    - Sincronización en tiempo real con Supabase (`suscriptores_leads`) vía endpoint seguro Nginx `/api/leads`.
    - Generación de mensaje estructurado de WhatsApp comercial.
 3. **Acceso al CRM**:
