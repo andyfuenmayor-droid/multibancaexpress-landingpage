@@ -252,3 +252,11 @@
     padding: 30px 20px;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .hero-cta-group {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 100%;
+  }
+}
