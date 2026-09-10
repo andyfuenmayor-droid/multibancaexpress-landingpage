@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 🗺️ *Ubicación:* ${state || 'No especificado'}
 📫 *Dirección:* ${address || 'No especificado'}
 
-_Generado automáticamente desde webapp.multibancaexpress.com_`;
+_Generado automáticamente desde multibancaexpress.com_`;
 
     submitBtn.innerHTML = '✅ Expediente Creado';
     window.showToast('Redirigiendo a WhatsApp para activación...', '📱');

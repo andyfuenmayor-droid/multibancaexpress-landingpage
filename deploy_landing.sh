@@ -2,14 +2,14 @@
 
 # ==============================================================================
 # Script de Despliegue Automatizado - Multibanca Express Landing Page
-# Dominio: webapp.multibancaexpress.com
+# Dominio: multibancaexpress.com
 # Repositorio: https://github.com/andyfuenmayor-droid/multibancaexpress-landingpage.git
 # Servidor: DigitalOcean (Ubuntu/Debian con Nginx)
 # ==============================================================================
 
 set -e
 
-DOMAIN="webapp.multibancaexpress.com"
+DOMAIN="multibancaexpress.com"
 WEB_ROOT="/var/www/$DOMAIN"
 REPO_URL="https://github.com/andyfuenmayor-droid/multibancaexpress-landingpage.git"
 TEMP_DIR="/tmp/multibancaexpress-landingpage-deploy"
@@ -40,10 +40,10 @@ rm -rf "$TEMP_DIR"
 chown -R www-data:www-data "$WEB_ROOT"
 chmod -R 755 "$WEB_ROOT"
 
-# 6. Configurar Nginx para webapp.multibancaexpress.com
+# 6. Configurar Nginx para multibancaexpress.com
 echo "⚙️ Configurando Nginx para $DOMAIN..."
-if [ -f "$WEB_ROOT/nginx_webapp.conf" ]; then
-    cp "$WEB_ROOT/nginx_webapp.conf" "/etc/nginx/sites-available/$DOMAIN"
+if [ -f "$WEB_ROOT/nginx_landing.conf" ]; then
+    cp "$WEB_ROOT/nginx_landing.conf" "/etc/nginx/sites-available/$DOMAIN"
     ln -sf "/etc/nginx/sites-available/$DOMAIN" "/etc/nginx/sites-enabled/$DOMAIN"
 fi
 
