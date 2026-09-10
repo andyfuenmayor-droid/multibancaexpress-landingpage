@@ -2,27 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Multibanca Express | Sistema Operativo y Financiero para Bancas y Operadoras</title>
-  <meta name="description" content="Automatiza la confirmación de pagos, liquidación de agencias, control de cobradores en ruta y cuadre de caja multi-moneda en tiempo real con Multibanca Express.">
-  <meta name="keywords" content="Multibanca Express, software banca de loteria, sistema taquillas, software operadora de apuestas, pizarra de confirmaciones, liquidacion agencias, cobradores en ruta QR">
+  <meta name="description" content="Automatiza la confirmación de pagos en segundos, liquidación de agencias, cobradores en ruta con QR, arqueo de caja multi-moneda (BS, USD, COP) y auditoría oficial vs taquilla en tiempo real con Multibanca Express.">
+  <meta name="keywords" content="Multibanca Express, software banca de loteria, sistema taquillas, software operadora de apuestas, pizarra de confirmaciones, liquidacion agencias, cobradores en ruta QR, caja maestra, auditoria hibrida">
   
-  <!-- Open Graph / Meta Compartir -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Multibanca Express | Plataforma Líder para Bancas y Operadoras">
-  <meta property="og:description" content="Elimina los descuadres y automatiza tu operación de agencias, cobradores y cajas en tiempo real.">
+  <meta property="og:description" content="Control centralizado de 23 módulos, arqueo multi-moneda en tiempo real y conciliación oficial vs taquilla sin descuadres.">
+  <meta property="og:url" content="https://webapp.multibancaexpress.com">
   
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   
-  <!-- Favicon Oficial Multibanca Express -->
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
   
-  <!-- Stylesheets (v3.0 No-Cache) -->
-  <link rel="stylesheet" href="css/variables.css?v=3.0">
-  <link rel="stylesheet" href="css/styles.css?v=3.0">
-  <link rel="stylesheet" href="css/responsive.css?v=3.0">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css?v=3.2">
+  <link rel="stylesheet" href="css/styles.css?v=3.2">
+  <link rel="stylesheet" href="css/responsive.css?v=3.2">
 </head>
 <body>
 
@@ -40,22 +45,29 @@
     <div class="container nav-container">
       <a href="#" class="brand-logo" title="Multibanca Express">
         <img src="assets/logo.svg" alt="Multibanca Express" class="brand-logo-img">
-        <span class="version-badge">v2.4 PRO</span>
+        <span class="version-badge">v2.5 FINTECH</span>
       </a>
 
       <nav>
         <ul class="nav-links" id="nav-links">
           <li><a href="#solucion" class="nav-link">Solución</a></li>
-          <li><a href="#modulos" class="nav-link">Módulos</a></li>
+          <li><a href="#ecosistema" class="nav-link">Ecosistema</a></li>
+          <li><a href="#modulos" class="nav-link">Módulos (23)</a></li>
+          <li><a href="#taquilla" class="nav-link">Taquilla POS</a></li>
           <li><a href="#calculadora" class="nav-link">Calculadora ROI</a></li>
           <li><a href="#planes" class="nav-link">Planes</a></li>
-          <li><a href="#registro" class="nav-link" style="color: #4ade80; font-weight: 700;">📝 Registrarse</a></li>
-          <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+          <li><a href="#registro" class="nav-link" style="color: #10b981; font-weight: 700;">📝 Registrarse</a></li>
           <li><a href="#faq" class="nav-link">Preguntas</a></li>
-          <!-- Accesos rápidos destacados en menú móvil -->
+          
+          <!-- Accesos móviles -->
           <li class="mobile-only-action" style="margin-top: 10px; width: 100%;">
             <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">
               <span>🔑 Iniciar Sesión en el CRM</span>
+            </a>
+          </li>
+          <li class="mobile-only-action" style="width: 100%;">
+            <a href="https://taq.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">
+              <span>🎟️ Terminal Taquilla POS</span>
             </a>
           </li>
           <li class="mobile-only-action" style="width: 100%;">
@@ -70,6 +82,9 @@
         <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm nav-crm-btn" title="Iniciar Sesión en el CRM Operadora">
           <span>🔑 Ir al CRM</span>
         </a>
+        <a href="https://taq.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm nav-crm-btn" title="Terminal Punto de Venta">
+          <span>🎟️ Taquilla</span>
+        </a>
         <a href="#registro" class="btn btn-primary btn-sm pulse-glow nav-reg-btn" title="Ir al Formulario de Registro">
           <span>📝 Registrarse</span>
         </a>
@@ -82,142 +97,69 @@
   </header>
 
   <!-- =========================================================================
-       2. HERO SECTION DE ALTO IMPACTO
+       2. HERO SECTION
        ========================================================================= -->
-  <section class="section hero-section" id="hero">
-    <div class="container hero-grid">
+  <section class="hero-section" id="hero">
+    <div class="container hero-container">
       
-      <!-- Hero Left: Sales Copy & CTAs -->
-      <div class="hero-left">
-        <div class="hero-badge-container">
-          <div class="live-indicator">
-            <span class="live-dot"></span>
-            <span>Sistema 100% en la Nube • Alta Disponibilidad</span>
-          </div>
-        </div>
-
-        <h1 class="hero-title">
-          El Sistema Operativo y Financiero <span class="gradient-text">Definitivo para Bancas</span> y Operadoras
-        </h1>
-
-        <p class="hero-description">
-          Automatiza la confirmación de pagos bancarios, liquidación de agencias, control de cobradores en ruta y cuadre de caja multi-moneda en tiempo real. <strong>Cero descuadres, máxima rentabilidad y control total desde cualquier dispositivo.</strong>
-        </p>
-
-        <div class="hero-cta-group" style="flex-wrap: wrap; gap: 14px;">
-          <a href="#registro" class="btn btn-primary btn-lg pulse-glow">
-            <span>📝 Registrarse en el Formulario ↓</span>
-          </a>
-          <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-lg" title="Iniciar Sesión en el CRM Operadora">
-            <span>🔑 Iniciar Sesión en el CRM →</span>
-          </a>
-          <a href="#planes" class="btn btn-secondary btn-lg">
-            <span>Ver Planes y Precios ↓</span>
-          </a>
-        </div>
-
-        <div class="hero-stats-row">
-          <div class="hero-stat-item">
-            <h3>99.9<span>%</span></h3>
-            <p>Disponibilidad Activa</p>
-          </div>
-          <div class="hero-stat-item">
-            <h3>&lt;30<span>seg</span></h3>
-            <p>Liquidación de Agencia</p>
-          </div>
-          <div class="hero-stat-item">
-            <h3>0<span>%</span></h3>
-            <p>Fugas por Duplicados</p>
-          </div>
-        </div>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>ECOSISTEMA FINTECH UNIFICADO • MULTIBANCA EXPRESS</span>
       </div>
 
-      <!-- Hero Right: Live Interactive Dashboard Mockup -->
-      <div class="hero-mockup-wrapper">
-        <div class="hero-mockup-glow"></div>
-        <div class="hero-mockup">
-          
-          <div class="mockup-header">
-            <div class="mockup-window-controls">
-              <span class="mockup-dot red"></span>
-              <span class="mockup-dot yellow"></span>
-              <span class="mockup-dot green"></span>
-            </div>
-            <span class="mockup-badge">SISTEMA EN VIVO • CAJA MAESTRA CONSOLIDADA</span>
+      <h1 class="hero-title">
+        El Sistema Financiero y Operativo Definitivo para <span class="gradient-text">Bancas y Operadoras</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Control centralizado de <b>23 módulos</b>, confirmación de pagos en segundos, liquidación de agencias en tiempo real, arqueo de caja en <b>3 monedas (BS, USD, COP)</b>, tickets térmicos con QR y <b>auditoría híbrida</b> oficial vs taquillas sin descuadres.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#registro" class="btn btn-primary btn-lg pulse-glow" onclick="openRegistrationModal('Profesional', 5)">
+          <span>📝 Comenzar Registro Ahora</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-lg">
+          <span>🔑 Iniciar Sesión en el CRM</span>
+        </a>
+        <a href="https://taq.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-lg">
+          <span>🎟️ Terminal Taquilla POS</span>
+        </a>
+        <a href="#planes" class="btn btn-ghost btn-lg">
+          <span>Ver Planes y Precios ↓</span>
+        </a>
+      </div>
+
+      <!-- Live Floating Badges -->
+      <div class="hero-metrics-bar">
+        <div class="metric-badge">
+          <span class="badge-icon">⚡</span>
+          <div>
+            <strong>Pizarra en Vivo</strong>
+            <small>0 pagos pendientes</small>
           </div>
-
-          <div class="mockup-metrics-grid">
-            <div class="mockup-metric-card">
-              <span class="label">Ventas Consolidadas (Semana)</span>
-              <span class="value">$54,820.50</span>
-              <span class="delta">▲ +14.8% vs semana ant.</span>
-            </div>
-            <div class="mockup-metric-card">
-              <span class="label">Pagos Pendientes por Confirmar</span>
-              <span class="value" style="color: #38bdf8;">0 Pendientes</span>
-              <span class="delta" style="color: #a78bfa;">✓ 100% Conciliado</span>
-            </div>
-            <div class="mockup-metric-card">
-              <span class="label">Agencias Activas en Red</span>
-              <span class="value">28 Puntos</span>
-              <span class="delta">🟢 28/28 Transmitiendo</span>
-            </div>
-            <div class="mockup-metric-card">
-              <span class="label">Cobradores en Ruta</span>
-              <span class="value">6 Activos</span>
-              <span class="delta">⚡ Liquidación QR Lista</span>
-            </div>
+        </div>
+        <div class="metric-badge">
+          <span class="badge-icon">💵</span>
+          <div>
+            <strong>Caja Maestra</strong>
+            <small>BS • USD • COP en tiempo real</small>
           </div>
-
-          <div class="mockup-feed-title">
-            <span>⚡ Feed Transaccional en Tiempo Real</span>
-            <span style="color: #22c55e;">● En línea</span>
+        </div>
+        <div class="metric-badge">
+          <span class="badge-icon">🛡️</span>
+          <div>
+            <strong>Auditoría Híbrida</strong>
+            <small>100% cuadre garantizado</small>
           </div>
-
-          <div class="mockup-feed-list" id="mockup-live-feed">
-            <div class="feed-item">
-              <div class="feed-item-left">
-                <div class="feed-icon pago-movil">📱</div>
-                <div>
-                  <span class="feed-title">Pago Móvil Validado con OCR</span>
-                  <span class="feed-sub">Ref: #892014 • Banesco • Agencia Centro 02</span>
-                </div>
-              </div>
-              <div class="feed-badge-success">+Bs 6,450.00</div>
-            </div>
-
-            <div class="feed-item">
-              <div class="feed-item-left">
-                <div class="feed-icon zelle">💎</div>
-                <div>
-                  <span class="feed-title">Zelle Confirmado</span>
-                  <span class="feed-sub">Ref: ZL-9921 • Caja Maestra USD</span>
-                </div>
-              </div>
-              <div class="feed-badge-success">+$420.00</div>
-            </div>
-
-            <div class="feed-item">
-              <div class="feed-item-left">
-                <div class="feed-icon qr-cobrador">⚡</div>
-                <div>
-                  <span class="feed-title">Liquidación QR Cobrador</span>
-                  <span class="feed-sub">Cobrador: Manuel G. • Ruta Este</span>
-                </div>
-              </div>
-              <div class="feed-badge-success">Liquidado OK</div>
-            </div>
+        </div>
+        <div class="metric-badge">
+          <span class="badge-icon">🖨️</span>
+          <div>
+            <strong>Tickets Térmicos</strong>
+            <small>ESC/POS 58mm y 80mm</small>
           </div>
-
-          <!-- Floating Badge -->
-          <div class="floating-pill">
-            <div class="floating-pill-icon">🛡️</div>
-            <div>
-              <div style="font-weight: 800; font-size: 0.85rem; color: #fff;">Auditoría Inviolable</div>
-              <div style="font-size: 0.72rem; color: #94a3b8;">Detección automática de duplicados</div>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -225,261 +167,243 @@
   </section>
 
   <!-- =========================================================================
-       3. MATRIZ PROBLEMA VS SOLUCIÓN (DOLORES DEL NEGOCIO)
+       3. ECOSISTEMA UNIFICADO 4 EN 1
        ========================================================================= -->
-  <section class="section" id="solucion">
+  <section class="section ecosystem-section" id="ecosistema">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">El Fin del Caos Operativo</span>
-        <h2>¿Por qué las Bancas y Operadoras eligen <span class="gradient-text">Multibanca Express</span>?</h2>
-        <p class="section-subtitle">Compara la operación tradicional basada en planillas y chats desordenados contra un ecosistema automatizado y blindado.</p>
+      <div class="section-header text-center">
+        <span class="section-tag">ARQUITECTURA MODERNA</span>
+        <h2 class="section-title">4 Plataformas Integradas en un Solo Ecosistema</h2>
+        <p class="section-desc">Multibanca Express conecta a todos los actores de tu negocio en tiempo real, desde la taquilla de la agencia hasta la dirección general.</p>
       </div>
 
-      <div class="comparison-grid">
-        <!-- Tarjeta de Dolor Tradicional -->
-        <div class="comparison-card pain">
-          <span class="comparison-badge pain-badge">❌ El Método Tradicional (Vulnerable y Lento)</span>
-          <h3 style="color: #fca5a5;">Pérdidas invisibles y horas perdidas</h3>
-          <ul class="comparison-list">
-            <li>
-              <span class="icon-cross">✕</span>
-              <span><strong>Comprobantes falsos o duplicados:</strong> Pagos móviles y transferencias repetidas que generan fugas de dinero constantes.</span>
-            </li>
-            <li>
-              <span class="icon-cross">✕</span>
-              <span><strong>Descuadres en ruta con cobradores:</strong> Dinero en calle sin trazabilidad exacta ni confirmación instantánea de entrega.</span>
-            </li>
-            <li>
-              <span class="icon-cross">✕</span>
-              <span><strong>Horas cuadrando planillas Excel:</strong> Cierres semanales interminables que tardan días en calcular comisiones y premios.</span>
-            </li>
-            <li>
-              <span class="icon-cross">✕</span>
-              <span><strong>Confusión multimoneda:</strong> Pérdidas por fluctuación cambiaria al mezclar Bolívares, Dólares, Pesos y Euros sin tasas en vivo.</span>
-            </li>
+      <div class="ecosystem-grid">
+        <!-- 1. CRM Operadora -->
+        <div class="ecosystem-card">
+          <div class="eco-card-header">
+            <span class="eco-icon">🚀</span>
+            <span class="eco-domain">crm.multibancaexpress.com</span>
+          </div>
+          <h3>Control Maestro Operativo (CRM)</h3>
+          <p>Para Directores, Contadores y Supervisores. Monitoreo central de la Pizarra de Confirmaciones, balances de Caja Maestra multi-divisa, liquidación semanal por ciclo contable, cierre con operadoras y auditoría.</p>
+          <ul class="eco-features">
+            <li>✓ Pizarra ágil de transferencias y pagos</li>
+            <li>✓ Balance consolidado en BS, USD y COP</li>
+            <li>✓ Auditoría Oficial vs Ventas de Taquilla</li>
           </ul>
+          <a href="https://crm.multibancaexpress.com" target="_blank" class="eco-link">Acceder al CRM →</a>
         </div>
 
-        <!-- Tarjeta de Solución SaaS -->
-        <div class="comparison-card solution">
-          <span class="comparison-badge solution-badge">✨ Con Multibanca Express (Automatizado y Seguro)</span>
-          <h3 style="color: #86efac;">Control absoluto, rapidez y rentabilidad</h3>
-          <ul class="comparison-list">
-            <li>
-              <span class="icon-check">✓</span>
-              <span><strong>Pizarra de Confirmaciones con OCR:</strong> Validación bancaria en segundos con detección estricta de referencias duplicadas.</span>
-            </li>
-            <li>
-              <span class="icon-check">✓</span>
-              <span><strong>Liquidación Instantánea por QR:</strong> Tus cobradores liquidan el dinero recaudado en la banca con 1 escaneo seguro.</span>
-            </li>
-            <li>
-              <span class="icon-check">✓</span>
-              <span><strong>Cierres de Agencia y Operadora en 30 Segundos:</strong> Carga ventas de cualquier sistema y obtén saldos netos al instante.</span>
-            </li>
-            <li>
-              <span class="icon-check">✓</span>
-              <span><strong>Caja Maestra Multi-Moneda Unificada:</strong> Gestión fluida en USD, Bs, COP, EUR y USDT con balances siempre al día.</span>
-            </li>
+        <!-- 2. Terminal Taquilla POS -->
+        <div class="ecosystem-card highlight-eco">
+          <div class="eco-card-header">
+            <span class="eco-icon">🎟️</span>
+            <span class="eco-domain">taq.multibancaexpress.com</span>
+          </div>
+          <span class="badge-tag">PUNTO DE VENTA</span>
+          <h3>Terminal de Taquilla y Cajero</h3>
+          <p>Para Cajeros y Agencias. Carga rápida de ventas diarias por lotería, control de gastos de terminal, pagos de premios con validación QR, arqueo físico de efectivo y tickets térmicos.</p>
+          <ul class="eco-features">
+            <li>✓ Impresión térmica 58mm y 80mm ESC/POS</li>
+            <li>✓ Escaneo QR de billetes premiados</li>
+            <li>✓ Arqueo de efectivo en BS, USD y COP</li>
           </ul>
+          <a href="https://taq.multibancaexpress.com" target="_blank" class="eco-link">Abrir Terminal Taquilla →</a>
+        </div>
+
+        <!-- 3. Cobradores en Ruta -->
+        <div class="ecosystem-card">
+          <div class="eco-card-header">
+            <span class="eco-icon">🛵</span>
+            <span class="eco-domain">taq.multibancaexpress.com/cobradores</span>
+          </div>
+          <h3>Portal Cobradores en Ruta</h3>
+          <p>Para Cobradores y Recaudadores en campo. Liquidación móvil geolocalizada en ruta, registro de recaudaciones en efectivo, emisión de recibos digitales y cuadre con Caja Maestra.</p>
+          <ul class="eco-features">
+            <li>✓ Recibo digital instantáneo con QR</li>
+            <li>✓ Control de ruta por agencia</li>
+            <li>✓ Cuadre directo con caja central</li>
+          </ul>
+          <a href="https://taq.multibancaexpress.com" target="_blank" class="eco-link">Ver Portal Cobradores →</a>
+        </div>
+
+        <!-- 4. Consola SaaS Admin -->
+        <div class="ecosystem-card">
+          <div class="eco-card-header">
+            <span class="eco-icon">💎</span>
+            <span class="eco-domain">sus.multibancaexpress.com</span>
+          </div>
+          <h3>Centro de Gestión SaaS</h3>
+          <p>Para la Administración de la Red. Gestión de clientes y licencias suscriptoras, ampliación de puntos de venta, cotizador dinámico de solicitudes y activación inmediata de accesos.</p>
+          <ul class="eco-features">
+            <li>✓ Alta de suscriptores en menos de 5 min</li>
+            <li>✓ Asignación dinámica de planes y módulos</li>
+            <li>✓ Envío automático de credenciales por WhatsApp</li>
+          </ul>
+          <a href="https://sus.multibancaexpress.com" target="_blank" class="eco-link">Gestión SaaS Admin →</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================================================
-       4. SUITE DE MÓDULOS INTERACTIVOS (TAB SWITCHER)
+       4. LOS 23 MÓDULOS CMS OFICIALES
        ========================================================================= -->
-  <section class="section" id="modulos">
+  <section class="section modules-section" id="modulos">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Módulos de Alto Rendimiento</span>
-        <h2>Todo lo que tu Negocio Necesita en una <span class="gradient-text-cyan">Sola Plataforma</span></h2>
-        <p class="section-subtitle">Diseñado específicamente para el flujo real de trabajo de agencias de lotería, taquillas deportivas y operadoras de juego.</p>
+      <div class="section-header text-center">
+        <span class="section-tag">CONTROL TOTAL</span>
+        <h2 class="section-title">Los 23 Módulos del Sistema Operativo</h2>
+        <p class="section-desc">Una suite completa de ingeniería financiera diseñada específicamente para resolver cada eslabón de la banca de lotería y apuestas.</p>
       </div>
 
-      <!-- Tab Buttons -->
-      <div class="features-tabs-container">
-        <button class="tab-btn active" data-tab="pizarra">
-          <span>📱 Pizarra de Confirmaciones</span>
-        </button>
-        <button class="tab-btn" data-tab="cobradores">
-          <span>⚡ Cobradores & QR Móvil</span>
-        </button>
-        <button class="tab-btn" data-tab="caja">
-          <span>🏦 Caja Maestra Multi-Moneda</span>
-        </button>
-        <button class="tab-btn" data-tab="agencias">
-          <span>🏪 Liquidación de Agencias</span>
-        </button>
-        <button class="tab-btn" data-tab="auditoria">
-          <span>🛡️ Auditoría & Seguridad</span>
-        </button>
+      <!-- Tabs de Categorías -->
+      <div class="modules-tabs-nav">
+        <button class="tab-btn active" data-tab="operaciones">⚡ Operaciones & Agencias</button>
+        <button class="tab-btn" data-tab="finanzas">💰 Caja Maestra & Finanzas</button>
+        <button class="tab-btn" data-tab="auditoria">🛡️ Auditoría Híbrida</button>
+        <button class="tab-btn" data-tab="operadoras">🏢 Operadoras & Proveedores</button>
+        <button class="tab-btn" data-tab="logistica">🛵 Cobradores & Logística</button>
+        <button class="tab-btn" data-tab="admin">⚙️ Administración General</button>
       </div>
 
-      <!-- Tab Content 1: Pizarra de Confirmaciones -->
-      <div class="tab-content active" id="tab-pizarra">
-        <div class="feature-detail-grid">
-          <div>
-            <h3>Pizarra de Confirmaciones en Tiempo Real</h3>
-            <p style="margin-top: 12px;">Olvídate de revisar manualmente cientos de capturas en WhatsApp. La Pizarra centraliza todos los pagos bancarios entrantes para que confirmes o rechaces con un solo clic.</p>
-            <ul class="feature-bullets">
-              <li><span class="bullet-dot"></span> Compatible con Pago Móvil, Transferencias Nacionales, Zelle, Cripto y Efectivo.</li>
-              <li><span class="bullet-dot"></span> Validación anti-fraude: Alerta instantánea si una referencia bancaria ya fue utilizada.</li>
-              <li><span class="bullet-dot"></span> Conciliación automática con las cuentas bancarias de la banca administradora.</li>
-            </ul>
-            <button class="btn btn-primary btn-sm" onclick="openDemoModal('Pizarra de Confirmaciones')">Probar Pizarra en Demo</button>
+      <!-- Tab Contents -->
+      <div class="tab-content active" id="tab-operaciones">
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="mod-icon">📊</span>
+            <h4>Pizarra de Confirmaciones</h4>
+            <p>Aprobación ágil de transferencias bancarias, Pago Móvil, puntos de venta y recaudaciones en tiempo real con 0 pendientes.</p>
           </div>
-          <div class="feature-card-preview">
-            <div class="preview-chip-row">
-              <span class="preview-chip active-chip">🟢 BANESCO</span>
-              <span class="preview-chip active-chip">🟢 MERCANTIL</span>
-              <span class="preview-chip active-chip">🟢 BDV</span>
-              <span class="preview-chip active-chip">💎 ZELLE</span>
-            </div>
-            <div style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px; border: 1px solid rgba(255,255,255,0.06);">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-                <span style="font-weight: 700; color: #fff;">Pago Móvil Recibido</span>
-                <span style="color: #22c55e; font-weight: 800;">Bs 8,920.00</span>
-              </div>
-              <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.6;">
-                Agencia: <strong>Av. Bolívar #04</strong><br>
-                Teléfono: 0414-***9210 • C.I: V-19.482.019<br>
-                Referencia: <strong>#9021882</strong> (Verificada Única ✓)
-              </div>
-              <div style="display: flex; gap: 10px; margin-top: 14px;">
-                <button class="btn btn-primary btn-sm" style="flex: 1; padding: 6px;">✓ Confirmar</button>
-                <button class="btn btn-secondary btn-sm" style="flex: 1; padding: 6px; color: #f87171;">✕ Rechazar</button>
-              </div>
-            </div>
+          <div class="module-card">
+            <span class="mod-icon">🏪</span>
+            <h4>Gestión de Agencias</h4>
+            <p>Configuración de redes de agencias, porcentajes de comisión diferenciados por sistema y límites de crédito operativos.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">📈</span>
+            <h4>Cargar Ventas</h4>
+            <p>Registro y consolidación de ventas brutas, comisiones y premios por cada terminal y sistema de juego.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">⚖️</span>
+            <h4>Saldo de Agencias</h4>
+            <p>Estado de cuenta vivo de cada agencia con desglose de ventas, premios pagados, gastos autorizados y abonos recibidos.</p>
           </div>
         </div>
       </div>
 
-      <!-- Tab Content 2: Cobradores & QR Móvil -->
-      <div class="tab-content" id="tab-cobradores">
-        <div class="feature-detail-grid">
-          <div>
-            <h3>Cobradores en Ruta con Liquidación QR</h3>
-            <p style="margin-top: 12px;">Equipa a tus cobradores con una interfaz web móvil ultra-rápida. Registran cobranzas en la calle y liquidan la entrega de efectivo al administrador mediante un token QR seguro.</p>
-            <ul class="feature-bullets">
-              <li><span class="bullet-dot"></span> Cuadre en vivo del dinero total recaudado en ruta por cada cobrador.</li>
-              <li><span class="bullet-dot"></span> Liquidación en taquilla física escaneando el código QR generado en el teléfono del cobrador.</li>
-              <li><span class="bullet-dot"></span> Cero disputas: Registro inmutable con fecha, hora exacta y monto liquidado.</li>
-            </ul>
-            <button class="btn btn-primary btn-sm" onclick="openDemoModal('Cobradores en Ruta')">Ver Módulo de Cobradores</button>
+      <div class="tab-content" id="tab-finanzas">
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="mod-icon">💎</span>
+            <h4>Caja Maestra Multi-Divisa</h4>
+            <p>Centro financiero con balances simultáneos en Bolívares (BS), Dólares (USD) y Pesos (COP) sin mezcla de tasas.</p>
           </div>
-          <div class="feature-card-preview">
-            <div style="text-align: center; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
-              <div style="font-size: 3.5rem; margin-bottom: 8px;">📲</div>
-              <h4 style="color: #fff; margin-bottom: 4px;">Pase de Liquidación QR</h4>
-              <p style="font-size: 0.8rem; color: #94a3b8;">Cobrador: Carlos Rodríguez (Ruta Centro)</p>
-              <div style="margin: 16px 0; background: rgba(2, 171, 33, 0.15); border: 1px solid rgba(2, 171, 33, 0.4); padding: 10px; border-radius: 8px; font-weight: 800; font-size: 1.2rem; color: #4ade80;">
-                Monto a Entregar: $1,450.00
-              </div>
-              <span class="preview-chip active-chip">⚡ Token QR Válido por 10 min</span>
-            </div>
+          <div class="module-card">
+            <span class="mod-icon">🏦</span>
+            <h4>Cuentas Bancarias</h4>
+            <p>Control de cuentas en múltiples bancos nacionales e internacionales, conciliación de saldos y pasarelas de pago.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">💸</span>
+            <h4>Pagos y Gastos de Agencias</h4>
+            <p>Registro de pagos por transferencia y gastos operativos autorizados con comprobantes adjuntos y auditoría de egresos.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">📉</span>
+            <h4>Venta Real y Reportes</h4>
+            <p>Cálculo de rentabilidad neta descontando comisiones y premios para conocer la utilidad exacta de cada ciclo.</p>
           </div>
         </div>
       </div>
 
-      <!-- Tab Content 3: Caja Maestra Multi-Moneda -->
-      <div class="tab-content" id="tab-caja">
-        <div class="feature-detail-grid">
-          <div>
-            <h3>Caja Maestra y Consolidación Multi-Moneda</h3>
-            <p style="margin-top: 12px;">Maneja de forma simultánea transacciones en Bolívares (Bs), Dólares (USD), Pesos Colombianos (COP), Euros (EUR) y USDT sin enredos en la tasa cambiaria.</p>
-            <ul class="feature-bullets">
-              <li><span class="bullet-dot"></span> Tasa de cambio configurable por ciclo de trabajo y por moneda.</li>
-              <li><span class="bullet-dot"></span> Flujo de caja en vivo con ingresos por agencias, cobradores y egresos de gastos.</li>
-              <li><span class="bullet-dot"></span> Arqueo y cierre de caja diario o semanal con exportación en 1 clic.</li>
-            </ul>
-            <button class="btn btn-primary btn-sm" onclick="openDemoModal('Caja Maestra')">Conocer Caja Maestra</button>
-          </div>
-          <div class="feature-card-preview">
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                <span>💵 Saldo Efectivo USD</span>
-                <span style="font-weight: 800; color: #fff;">$12,450.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                <span>🇻🇪 Saldo Bancario Bs</span>
-                <span style="font-weight: 800; color: #4ade80;">Bs 482,900.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                <span>💎 Cuentas Digitales (Zelle/USDT)</span>
-                <span style="font-weight: 800; color: #38bdf8;">$8,320.00</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab Content 4: Liquidación de Agencias & Operadoras -->
-      <div class="tab-content" id="tab-agencias">
-        <div class="feature-detail-grid">
-          <div>
-            <h3>Liquidación Automática de Agencias y Operadoras</h3>
-            <p style="margin-top: 12px;">Carga masiva de reportes de ventas de sistemas externos (Loterías, Apuestas Deportivas, Animalitos, Parleys). El sistema calcula comisiones de puntos, porcentaje de operadora y utilidad real.</p>
-            <ul class="feature-bullets">
-              <li><span class="bullet-dot"></span> Desglose exacto: Venta Bruta, Premios Pagados, Gastos de Agencia y Saldo Neto.</li>
-              <li><span class="bullet-dot"></span> Liquidación con proveedores de juego y cálculo de comisiones retenidas.</li>
-              <li><span class="bullet-dot"></span> Estado de cuenta individual descargable para cada agencia y franquicia.</li>
-            </ul>
-            <button class="btn btn-primary btn-sm" onclick="openDemoModal('Liquidación de Agencias')">Solicitar Demostración</button>
-          </div>
-          <div class="feature-card-preview">
-            <div style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 18px; border: 1px solid rgba(255,255,255,0.06);">
-              <div style="font-weight: 700; color: #fff; margin-bottom: 12px;">Resumen de Cierre de Agencia #12</div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <span style="color: #94a3b8;">Venta Total:</span>
-                <span style="color: #fff; font-weight: 700;">$4,500.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <span style="color: #94a3b8;">Comisión Agencia (15%):</span>
-                <span style="color: #f87171;">-$675.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <span style="color: #94a3b8;">Premios Pagados:</span>
-                <span style="color: #f87171;">-$2,100.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 1rem; padding-top: 10px; font-weight: 800;">
-                <span style="color: #fff;">Saldo a Cobrar Agencia:</span>
-                <span style="color: #4ade80;">+$1,725.00</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab Content 5: Auditoría & Seguridad -->
       <div class="tab-content" id="tab-auditoria">
-        <div class="feature-detail-grid">
-          <div>
-            <h3>Auditoría Híbrida y Trazabilidad Blindada</h3>
-            <p style="margin-top: 12px;">Protege el patrimonio de tu empresa. Control de accesos por roles (Administrador General, Supervisor, Cajero, Cobrador) y registro inmutable de cada acción en el sistema.</p>
-            <ul class="feature-bullets">
-              <li><span class="bullet-dot"></span> Bitácora completa de creación, modificación o anulación de transacciones.</li>
-              <li><span class="bullet-dot"></span> Respaldos automáticos en la nube y cifrado seguro de datos.</li>
-              <li><span class="bullet-dot"></span> Alertas preventivas ante comportamientos anómalos o montos inusuales.</li>
-            </ul>
-            <button class="btn btn-primary btn-sm" onclick="openDemoModal('Auditoría y Seguridad')">Ver Seguridad en Demo</button>
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="mod-icon">🛡️</span>
+            <h4>Auditoría Híbrida Oficial vs Taquilla</h4>
+            <p>Cruce automatizado por ciclo completo entre la carga oficial de proveedores y las ventas físicas reportadas por los terminales.</p>
           </div>
-          <div class="feature-card-preview">
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px;">
-                <span style="color: #22c55e;">🛡️</span>
-                <span style="font-size: 0.82rem; color: #fff;">Sesión Admin iniciada desde IP Verificada</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px;">
-                <span style="color: #38bdf8;">🔐</span>
-                <span style="font-size: 0.82rem; color: #fff;">Cierre Semanal firmado digitalmente</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px;">
-                <span style="color: #fbbf24;">⚡</span>
-                <span style="font-size: 0.82rem; color: #fff;">Base de Datos respaldada en Servidores Seguros</span>
-              </div>
-            </div>
+          <div class="module-card">
+            <span class="mod-icon">🔍</span>
+            <h4>Detección de Discrepancias</h4>
+            <p>Alerta inmediata por terminal de tickets no reportados, descuadres de comisiones o anomalías en pagos de premios.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">📅</span>
+            <h4>Cierre Semanal por Ciclo</h4>
+            <p>Liquidación contable semanal (ej. Semana 36) con congelación de ciclo y generación de balance oficial exportable.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">👥</span>
+            <h4>Gestión Multiusuario Integrada</h4>
+            <p>Trazabilidad total de quién aprobó, registró o modificó cada movimiento con marca de tiempo y rol.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-operadoras">
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="mod-icon">🏢</span>
+            <h4>Pagos a Operador</h4>
+            <p>Liquidación de balances pendientes con proveedores externos y operadoras matrices con soporte de pagos parciales.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">📊</span>
+            <h4>Venta Operadora</h4>
+            <p>Conciliación de ventas por proveedor de lotería (Triple Gordo, Ruleta Activa, Lotto Rey, Animalitos, etc.).</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">📑</span>
+            <h4>Reporte y Cierre de Operadora</h4>
+            <p>Generación de corte consolidado para emitir estados de cuenta a los proveedores sin errores de cálculo.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">⚙️</span>
+            <h4>Configuración de Proveedores</h4>
+            <p>Parámetros técnicos de comisiones, porcentajes de participación y esquemas de premios por operadora.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-logistica">
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="mod-icon">🛵</span>
+            <h4>Cobradores en Ruta</h4>
+            <p>Rutas asignadas a cobradores para la recolección física de efectivo en agencias con geolocalización.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">📱</span>
+            <h4>Liquidación Móvil QR</h4>
+            <p>Emisión de recibo digital inmediato que el cobrador entrega a la agencia al recibir el dinero en efectivo.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">🗂️</span>
+            <h4>Arqueo de Cobranza</h4>
+            <p>Cierre diario del cobrador con conteo de billetes en BS, USD y COP que se ingresa a Caja Maestra sin faltantes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-admin">
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="mod-icon">🏛️</span>
+            <h4>Gastos Administrativos</h4>
+            <p>Control de nóminas, alquileres, servidores y gastos corporativos ajenos a la operación directa de agencias.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">🔒</span>
+            <h4>Cierre General de Empresa</h4>
+            <p>Consolidación final de utilidades de la operadora después de agencias, operadoras y gastos generales.</p>
+          </div>
+          <div class="module-card">
+            <span class="mod-icon">🔧</span>
+            <h4>Ajustes y Parámetros Globales</h4>
+            <p>Configuración de fechas de ciclo semanal, monedas activas y políticas de acceso.</p>
           </div>
         </div>
       </div>
@@ -488,554 +412,640 @@
   </section>
 
   <!-- =========================================================================
-       5. CALCULADORA DINÁMICA DE ROI Y COTIZADOR EN TIEMPO REAL
+       5. HARDWARE Y TAQUILLA POS
        ========================================================================= -->
-  <section class="section" id="calculadora">
+  <section class="section hardware-section" id="taquilla">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Calculadora Interactiva de Rendimiento</span>
-        <h2>Calcula tu Retorno de Inversión y <span class="gradient-text">Ahorro Mensual</span></h2>
-        <p class="section-subtitle">Mueve los controles para ver el tiempo de trabajo que ahorrarás y el costo transparente para el tamaño de tu red.</p>
+      <div class="section-header text-center">
+        <span class="section-tag">PUNTO DE VENTA Y HARDWARE</span>
+        <h2 class="section-title">Terminal de Taquilla: Rápida, Confiable y Térmica</h2>
+        <p class="section-desc">Diseñada para operar en cualquier computadora, laptop o teléfono móvil en agencia sin configuraciones complejas.</p>
       </div>
 
-      <div class="calculator-card">
-        <div class="calculator-grid">
+      <div class="hardware-grid">
+        <div class="hw-card">
+          <span class="hw-icon">🖨️</span>
+          <h3>Impresión Térmica Nativa</h3>
+          <p>Compatibilidad directa con impresoras térmicas de <b>58mm y 80mm</b> (ESC/POS) USB, Bluetooth y red. Imprime tickets de venta, recibos de pago y comprobantes de arqueo en segundos.</p>
+        </div>
+
+        <div class="hw-card">
+          <span class="hw-icon">📷</span>
+          <h3>Escáner QR de Tickets Premiados</h3>
+          <p>Valida y paga tickets ganadores al instante utilizando la cámara web o lector de código de barras, evitando pagar billetes caducados o falsificados.</p>
+        </div>
+
+        <div class="hw-card">
+          <span class="hw-icon">💵</span>
+          <h3>Arqueo Físico en 3 Monedas</h3>
+          <p>El cajero desglosa las denominaciones físicas de billetes en Bolívares (BS), Dólares (USD) y Pesos (COP) para un cuadre exacto con el sistema.</p>
+        </div>
+
+        <div class="hw-card">
+          <span class="hw-icon">🛡️</span>
+          <h3>Pizarra de Supervisión</h3>
+          <p>Los supervisores monitorean en tiempo real el saldo de cada cajero, ventas acumuladas y solicitudes de pago para una respuesta inmediata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. CALCULADORA DINÁMICA DE ROI
+       ========================================================================= -->
+  <section class="section calc-section" id="calculadora">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">COTIZADOR DINÁMICO</span>
+        <h2 class="section-title">Calcula tu Inversión y el Retorno Estimado</h2>
+        <p class="section-desc">Precios transparentes calculados con la fórmula oficial: Costo Base + (Puntos × Tarifa por Punto).</p>
+      </div>
+
+      <div class="calculator-wrapper">
+        <div class="calc-inputs-col">
           
-          <!-- Controles de la Calculadora -->
-          <div class="calculator-controls">
-            <div class="slider-group">
-              <div class="slider-header">
-                <label class="slider-label" for="calc-agencias">Número de Agencias / Puntos de Venta:</label>
-                <span class="slider-value-display" id="calc-agencias-val">10</span>
-              </div>
-              <input type="range" id="calc-agencias" class="custom-range" min="1" max="60" value="10" step="1">
+          <!-- Selector de Plan -->
+          <div class="calc-group">
+            <label class="calc-label">1. Selecciona el Plan a Cotizar:</label>
+            <div class="calc-plan-pills">
+              <label class="calc-plan-pill">
+                <input type="radio" name="calc-plan-choice" value="basico">
+                <span>📦 Básico ($150)</span>
+              </label>
+              <label class="calc-plan-pill">
+                <input type="radio" name="calc-plan-choice" value="profesional" checked>
+                <span>⭐ Profesional ($250)</span>
+              </label>
+              <label class="calc-plan-pill">
+                <input type="radio" name="calc-plan-choice" value="elite">
+                <span>🏆 Elite ($500)</span>
+              </label>
             </div>
+            <small class="calc-hint" id="calc-plan-desc">21 / 23 módulos • Gestión integral de Agencias, Operadoras y Proveedores.</small>
+          </div>
 
-            <div class="slider-group">
-              <div class="slider-header">
-                <label class="slider-label" for="calc-tx">Transacciones / Pagos Diarios Estimados:</label>
-                <span class="slider-value-display" id="calc-tx-val">600</span>
-              </div>
-              <input type="range" id="calc-tx" class="custom-range" min="50" max="3000" value="600" step="50">
+          <!-- Slider Agencias -->
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label class="calc-label" for="calc-agencias">2. Cantidad de Puntos de Venta / Agencias:</label>
+              <span class="calc-val-badge"><span id="calc-agencias-val">10</span> agencias</span>
             </div>
-
-            <div style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
-              💡 <em>El cálculo incluye la base del sistema, licencias de agencias ilimitadas según el plan y prevención activa de descuadres.</em>
+            <input type="range" id="calc-agencias" min="1" max="60" value="10" step="1" class="calc-range">
+            <div class="range-markers">
+              <span>1</span>
+              <span>15</span>
+              <span>30</span>
+              <span>45</span>
+              <span>60+</span>
             </div>
           </div>
 
-          <!-- Panel de Resultados Dinámicos -->
-          <div class="calc-result-panel">
-            <div class="calc-rec-plan">
-              <div>
-                <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase;">Plan Óptimo Sugerido:</span>
-                <div style="font-size: 1.3rem; font-weight: 800; color: #fff;" id="rec-plan-name">Profesional</div>
-              </div>
-              <span class="plan-pill">RECOMENDADO</span>
+          <!-- Toggle Anual -->
+          <div class="calc-annual-toggle">
+            <span>Facturación Mensual</span>
+            <label class="switch">
+              <input type="checkbox" onchange="setCalculatorAnnual(this.checked)">
+              <span class="slider round"></span>
+            </label>
+            <span class="annual-badge">Facturación Anual <small>(Ahorra 15%)</small></span>
+          </div>
+
+        </div>
+
+        <!-- Columna de Resultados -->
+        <div class="calc-results-col">
+          <div class="calc-summary-card">
+            <span class="summary-plan-tag" id="rec-plan-name">Plan Profesional</span>
+            
+            <div class="summary-price-box">
+              <span class="price-currency">USD</span>
+              <span class="price-number" id="calc-total-price">$330</span>
+              <span class="price-period">/ mes</span>
             </div>
 
-            <div class="calc-metrics-row">
-              <div class="calc-metric-box">
-                <div class="metric-num" id="calc-saved-hours">95h</div>
-                <div class="metric-lbl">Horas Ahorradas / Mes</div>
+            <p class="summary-formula" id="calc-formula-breakdown">
+              Base $250 + (10 agencias × $8) = <b>$330 USD/mes</b>
+            </p>
+
+            <div class="summary-metrics-grid">
+              <div class="s-metric">
+                <span class="s-metric-icon">⏳</span>
+                <strong>Horas Ahorradas</strong>
+                <span id="calc-saved-hours">95h / mes</span>
+                <small>En cuadres de agencias</small>
               </div>
-              <div class="calc-metric-box">
-                <div class="metric-num" style="color: #4ade80;" id="calc-leakage-saved">$310</div>
-                <div class="metric-lbl">Fugas Evitadas / Mes</div>
+              <div class="s-metric">
+                <span class="s-metric-icon">🛡️</span>
+                <strong>Fugas Prevenidas</strong>
+                <span id="calc-leakage-saved">$325 USD</span>
+                <small>Por dobles pagos y errores</small>
               </div>
             </div>
 
-            <div class="calc-total-box">
-              <div class="total-label">Inversión Estimada del Sistema</div>
-              <div class="total-price" id="calc-total-price">$330<span>/mes</span></div>
-            </div>
-
-            <button class="btn btn-primary" style="width: 100%;" onclick="openDemoModal('Cotización Calculadora ROI')">
-              Solicitar Demostración con este Plan
+            <button class="btn btn-primary btn-block pulse-glow" id="calc-hire-btn">
+              <span>🚀 Contratar con esta Configuración</span>
             </button>
-          </div>
 
+            <span class="summary-footnote">Activación inmediata en menos de 5 minutos vía WhatsApp</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================================================
-       6. PLANES Y PRECIOS TRANSPARENTES
+       7. PLANES Y TARIFAS OFICIALES
        ========================================================================= -->
-  <section class="section" id="planes">
+  <section class="section plans-section" id="planes">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Planes Comerciales Claros</span>
-        <h2>Inversión Simple, Escalable y <span class="gradient-text">Sin Sorpresas</span></h2>
-        <p class="section-subtitle">Elige el plan ideal para el tamaño actual de tu negocio y escala a tu propio ritmo.</p>
+      <div class="section-header text-center">
+        <span class="section-tag">TARIFAS CLARAS</span>
+        <h2 class="section-title">Planes Transparentes que Crecen con tu Red</h2>
+        <p class="section-desc">Sin costos ocultos ni sorpresas. Incluye servidores dedicados, base de datos en tiempo real y soporte técnico prioritario.</p>
       </div>
 
-      <!-- Toggle Facturación Mensual / Anual -->
-      <div class="billing-toggle-wrapper">
-        <span class="billing-label active" id="label-monthly">Facturación Mensual</span>
-        <div class="toggle-switch" id="billing-toggle">
-          <div class="toggle-slider"></div>
-        </div>
-        <span class="billing-label" id="label-annual">Facturación Anual</span>
-        <span class="discount-badge">Ahorra 15%</span>
-      </div>
-
-      <div class="pricing-grid">
+      <div class="plans-grid">
         
         <!-- Plan Básico -->
-        <div class="glass-card pricing-card">
-          <div>
-            <div class="plan-header">
-              <h3 class="plan-name">Básico (SaaS)</h3>
-              <p class="plan-desc">Gestión operativa completa de agencias hasta Caja Maestra.</p>
-            </div>
-            <div class="plan-price-wrapper">
-              <div class="plan-price" id="price-basico">$150<span>/mes</span></div>
-              <div class="point-cost-tag">+ $5 por punto / agencia</div>
-            </div>
-            <ul class="plan-features-list">
-              <li><span class="check-icon">✓</span> Módulo de Inicio y Métricas en Vivo</li>
-              <li><span class="check-icon">✓</span> Pizarra de Confirmaciones Bancarias</li>
-              <li><span class="check-icon">✓</span> Multi-Monedas y Cuentas Bancarias</li>
-              <li><span class="check-icon">✓</span> Cobradores y Liquidación de Ruta</li>
-              <li><span class="check-icon">✓</span> Carga de Ventas, Pagos y Gastos</li>
-              <li><span class="check-icon">✓</span> Saldo de Agencias y Venta Real</li>
-              <li><span class="check-icon">✓</span> Caja Maestra Consolidada</li>
-            </ul>
+        <div class="plan-card">
+          <div class="plan-badge">REDES EN CRECIMIENTO</div>
+          <h3 class="plan-title">Básico (SaaS)</h3>
+          <p class="plan-desc">Gestión operativa completa de agencias hasta Caja Maestra.</p>
+          
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">150</span>
+            <span class="period">USD / mes</span>
           </div>
-          <button class="btn btn-secondary" style="width: 100%;" onclick="goToRegisterForm('Plan Básico')">
-            📝 Registrarse en Plan Básico
+          <div class="plan-point-rate">+ $5.00 USD por cada punto o agencia</div>
+
+          <div class="plan-modules-count">
+            <strong>16 / 23 módulos activos</strong>
+          </div>
+
+          <ul class="plan-features-list">
+            <li>✓ Inicio y Tableros KPI</li>
+            <li>✓ Pizarra de Confirmaciones en Vivo</li>
+            <li>✓ Cargar Ventas por Sistema</li>
+            <li>✓ Saldo de Agencias y Liquidaciones</li>
+            <li>✓ Caja Maestra en BS, USD y COP</li>
+            <li>✓ Monedas, Cuentas Bancarias y Cobradores</li>
+            <li>✓ Venta Real y Reportes por Agencia</li>
+            <li>✓ Cierre de Ciclo Semanal</li>
+            <li class="disabled">✕ Módulo Operadoras y Proveedores</li>
+            <li class="disabled">✕ Auditoría Híbrida Oficial vs Taquilla</li>
+          </ul>
+
+          <button class="btn btn-secondary btn-block" onclick="openRegistrationModal('Básico (SaaS)', 5)">
+            Contratar Plan Básico
           </button>
         </div>
 
         <!-- Plan Profesional (Destacado) -->
-        <div class="glass-card pricing-card featured">
-          <span class="popular-ribbon">⭐ MÁS ELEGIDO POR OPERADORAS</span>
-          <div>
-            <div class="plan-header">
-              <h3 class="plan-name" style="color: #4ade80;">Profesional</h3>
-              <p class="plan-desc">Gestión integral de Agencias, Operadoras y Proveedores de Juegos.</p>
-            </div>
-            <div class="plan-price-wrapper">
-              <div class="plan-price" id="price-pro" style="color: #fff;">$250<span>/mes</span></div>
-              <div class="point-cost-tag" style="background: rgba(2, 171, 33, 0.2); color: #86efac;">+ $8 por punto / agencia</div>
-            </div>
-            <ul class="plan-features-list">
-              <li><span class="check-icon">✓</span> <strong>Todo lo incluido en el Plan Básico</strong></li>
-              <li><span class="check-icon">✓</span> Módulo de Pagos a Operador</li>
-              <li><span class="check-icon">✓</span> Venta por Operadora y Proveedor</li>
-              <li><span class="check-icon">✓</span> Reportes Avanzados de Operadora</li>
-              <li><span class="check-icon">✓</span> Cierre Automático con Operadoras</li>
-              <li><span class="check-icon">✓</span> Configuración de Proveedores de Juegos</li>
-              <li><span class="check-icon">✓</span> Soporte Técnico Prioritario</li>
-            </ul>
+        <div class="plan-card featured-plan">
+          <div class="plan-popular-ribbon">MÁS POPULAR ⭐</div>
+          <div class="plan-badge">CONTROL INTEGRAL</div>
+          <h3 class="plan-title">Profesional</h3>
+          <p class="plan-desc">Gestión integral de Agencias, Operadoras y Proveedores.</p>
+          
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">250</span>
+            <span class="period">USD / mes</span>
           </div>
-          <button class="btn btn-primary pulse-glow" style="width: 100%;" onclick="goToRegisterForm('Plan Profesional')">
-            ⭐ Registrarse en Plan Profesional
+          <div class="plan-point-rate">+ $8.00 USD por cada punto o agencia</div>
+
+          <div class="plan-modules-count featured-count">
+            <strong>21 / 23 módulos activos</strong>
+          </div>
+
+          <ul class="plan-features-list">
+            <li>✓ <b>Todo lo incluido en el Plan Básico</b></li>
+            <li>✓ Pagos a Operador de Lotería</li>
+            <li>✓ Venta por Operadora y Proveedor</li>
+            <li>✓ Reportes Consolidados de Operadora</li>
+            <li>✓ Cierre y Liquidación de Operadora</li>
+            <li>✓ Configuración Técnica de Proveedores</li>
+            <li>✓ Comisiones y Esquemas de Premios</li>
+            <li>✓ Soporte Técnico Prioritario</li>
+            <li class="disabled">✕ Auditoría Híbrida Oficial vs Taquilla</li>
+            <li class="disabled">✕ Gastos Administrativos Generales</li>
+          </ul>
+
+          <button class="btn btn-primary btn-block pulse-glow" onclick="openRegistrationModal('Profesional', 10)">
+            Contratar Plan Profesional
           </button>
         </div>
 
-        <!-- Plan Elite -->
-        <div class="glass-card pricing-card">
-          <div>
-            <div class="plan-header">
-              <h3 class="plan-name">Elite Enterprise</h3>
-              <p class="plan-desc">Control total sin límites: Auditoría Híbrida y Gastos Administrativos.</p>
-            </div>
-            <div class="plan-price-wrapper">
-              <div class="plan-price" id="price-elite">$500<span>/mes</span></div>
-              <div class="point-cost-tag">+ $12 por punto / agencia</div>
-            </div>
-            <ul class="plan-features-list">
-              <li><span class="check-icon">✓</span> <strong>Todos los módulos del CMS sin límite</strong></li>
-              <li><span class="check-icon">✓</span> Auditoría Híbrida y Detección de Fugas</li>
-              <li><span class="check-icon">✓</span> Módulo de Gastos Administrativos VIP</li>
-              <li><span class="check-icon">✓</span> Multi-Administradores y Supervisores</li>
-              <li><span class="check-icon">✓</span> Asesor de Éxito Dedicado 24/7</li>
-              <li><span class="check-icon">✓</span> Migración e importación guiada de datos</li>
-            </ul>
+        <!-- Plan Elite Enterprise -->
+        <div class="plan-card">
+          <div class="plan-badge">MÁXIMO CONTROL</div>
+          <h3 class="plan-title">Elite Enterprise 🏆</h3>
+          <p class="plan-desc">Control total sin límites: Incluye Auditoría Híbrida y Gastos Administrativos.</p>
+          
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">500</span>
+            <span class="period">USD / mes</span>
           </div>
-          <button class="btn btn-secondary" style="width: 100%;" onclick="goToRegisterForm('Plan Elite')">
-            🚀 Registrarse en Plan Elite Enterprise
+          <div class="plan-point-rate">+ $12.00 USD por cada punto o agencia</div>
+
+          <div class="plan-modules-count">
+            <strong>23 / 23 módulos activos (100% del Sistema)</strong>
+          </div>
+
+          <ul class="plan-features-list">
+            <li>✓ <b>Todo lo incluido en el Plan Profesional</b></li>
+            <li>✓ <b>Auditoría Híbrida Oficial vs Taquilla</b></li>
+            <li>✓ Detección de Discrepancias por Terminal</li>
+            <li>✓ Gastos Administrativos y Corporativos</li>
+            <li>✓ Cierre General de Empresa</li>
+            <li>✓ Acceso a API de Integraciones</li>
+            <li>✓ Base de Datos Dedicada y Backups Continuos</li>
+            <li>✓ Asesoría de Cuadre y Soporte VIP 24/7</li>
+          </ul>
+
+          <button class="btn btn-secondary btn-block" onclick="openRegistrationModal('Elite', 20)">
+            Contratar Plan Elite
           </button>
         </div>
 
       </div>
+
+      <!-- Tabla Comparativa de Módulos -->
+      <div class="matrix-container" style="margin-top: 50px;">
+        <h3 class="text-center font-bold text-white mb-4">Matriz Comparativa de Módulos Oficiales</h3>
+        <div class="matrix-table-wrapper">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>Módulos del Sistema (23 Módulos)</th>
+                <th class="text-center">Básico ($150)</th>
+                <th class="text-center highlight-col">Profesional ($250)</th>
+                <th class="text-center">Elite ($500)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Inicio, Tablero Ejecutivo y Métricas</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Pizarra de Confirmaciones en Tiempo Real</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Caja Maestra Multi-Moneda (BS, USD, COP)</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Gestión de Agencias y Comisiones</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Cargar Ventas y Saldo de Agencias</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Terminal Taquilla POS e Impresión Térmica</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Portal de Cobradores en Ruta con QR</td>
+                <td class="text-center check">✓</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Módulo Operadoras y Liquidación Proveedores</td>
+                <td class="text-center cross">✕</td>
+                <td class="text-center check highlight-col">✓</td>
+                <td class="text-center check">✓</td>
+              </tr>
+              <tr>
+                <td>Auditoría Híbrida (Carga Oficial vs Taquilla)</td>
+                <td class="text-center cross">✕</td>
+                <td class="text-center cross highlight-col">✕</td>
+                <td class="text-center check font-bold">✓ (Exclusivo)</td>
+              </tr>
+              <tr>
+                <td>Gastos Administrativos y Cierre General</td>
+                <td class="text-center cross">✕</td>
+                <td class="text-center cross highlight-col">✕</td>
+                <td class="text-center check font-bold">✓ (Exclusivo)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- =========================================================================
-       7. FORMULARIO OFICIAL DE REGISTRO DIRECTO Y ACTIVACIÓN DE CUENTA
+       8. FORMULARIO DE REGISTRO EN PÁGINA
        ========================================================================= -->
-  <section class="section" id="registro" style="background: radial-gradient(circle at 50% 50%, rgba(2, 171, 33, 0.09) 0%, transparent 70%); padding: 60px 0;">
+  <section class="section register-section" id="registro">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag" style="background: rgba(2, 171, 33, 0.2); border-color: rgba(2, 171, 33, 0.4); color: #86efac;">Registro Oficial</span>
-        <h2>Formulario de <span class="gradient-text">Registro y Activación</span></h2>
-        <p class="section-subtitle">Completa tus datos a continuación para registrar tu banca u operadora. Activaremos tu acceso operativo en el CRM de inmediato.</p>
-      </div>
-
-      <div class="glass-card" style="max-width: 820px; margin: 0 auto; padding: 40px 32px; border: 1px solid rgba(2, 171, 33, 0.35); box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
-        
-        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border-glass);">
-          <div style="font-size: 2.2rem;">📋</div>
-          <div>
-            <h3 style="margin: 0; font-size: 1.35rem; color: #ffffff;">Expediente de Nueva Suscripción</h3>
-            <p style="margin: 4px 0 0; font-size: 0.88rem; color: #94a3b8;">Los datos ingresados se guardan de forma instantánea en la base de datos de gestión.</p>
+      <div class="register-card-wrapper">
+        <div class="register-card">
+          <div class="register-header text-center">
+            <span class="section-tag">ALTA INMEDIATA</span>
+            <h2 class="section-title">Registra tu Banca u Operadora</h2>
+            <p class="section-desc">Crea tu expediente en nuestro sistema central. Un asesor activará tus credenciales en menos de 5 minutos.</p>
           </div>
+
+          <form id="inpage-register-form" class="register-form">
+            <div class="form-grid">
+              
+              <div class="form-group">
+                <label for="inpage-lead-name">👤 Nombre y Apellido del Representante *</label>
+                <input type="text" id="inpage-lead-name" class="form-input" placeholder="Ej: Carlos Mendoza" required>
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-business">🏢 Nombre de la Banca / Operadora *</label>
+                <input type="text" id="inpage-lead-business" class="form-input" placeholder="Ej: Inversiones La Fortuna" required>
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-phone">📱 Número de WhatsApp *</label>
+                <input type="tel" id="inpage-lead-phone" class="form-input" placeholder="Ej: +58 412 1234567" required>
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-email">📧 Correo Electrónico</label>
+                <input type="email" id="inpage-lead-email" class="form-input" placeholder="contacto@labanca.com">
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-points">📍 Cantidad de Puntos de Venta / Agencias</label>
+                <select id="inpage-lead-points" class="form-select">
+                  <option value="5">1 a 5 Puntos de Venta</option>
+                  <option value="10" selected>6 a 15 Puntos de Venta</option>
+                  <option value="20">16 a 30 Puntos de Venta</option>
+                  <option value="50">30 a 50+ Puntos de Venta</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-plan">💎 Plan de Interés</label>
+                <select id="inpage-lead-plan" class="form-select">
+                  <option value="Básico (SaaS)">Plan Básico ($150 / $5 por punto)</option>
+                  <option value="Profesional" selected>Plan Profesional ($250 / $8 por punto)</option>
+                  <option value="Elite">Plan Elite Enterprise ($500 / $12 por punto)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-state">📍 Ubicación (Estado / Ciudad)</label>
+                <input type="text" id="inpage-lead-state" class="form-input" placeholder="Ej: Zulia, Maracaibo">
+              </div>
+
+              <div class="form-group">
+                <label for="inpage-lead-address">📫 Dirección o Sede Principal</label>
+                <input type="text" id="inpage-lead-address" class="form-input" placeholder="Ej: Av. 5 de Julio, Edif. Central">
+              </div>
+
+            </div>
+
+            <button type="submit" id="inpage-submit-btn" class="btn btn-primary btn-block btn-lg pulse-glow" style="margin-top: 20px;">
+              <span>🚀 Registrarse y Abrir WhatsApp para Activación</span>
+            </button>
+
+            <p class="form-privacy-note text-center">
+              🔒 Tus datos se transmiten de forma cifrada a través de nuestros servidores seguros en DigitalOcean.
+            </p>
+          </form>
         </div>
-
-        <form class="lead-form" id="inpage-register-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="inpage-lead-name">Nombre y Apellido del Representante *</label>
-              <input type="text" id="inpage-lead-name" class="form-control" placeholder="Ej: Carlos Rodríguez" required>
-            </div>
-            <div class="form-group">
-              <label for="inpage-lead-business">Nombre de la Banca u Operadora *</label>
-              <input type="text" id="inpage-lead-business" class="form-control" placeholder="Ej: Inversiones Fortuna Express" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="inpage-lead-phone">Número de WhatsApp (con código internacional) *</label>
-              <input type="tel" id="inpage-lead-phone" class="form-control" placeholder="+58 412 1234567" required>
-            </div>
-            <div class="form-group">
-              <label for="inpage-lead-email">Correo Electrónico *</label>
-              <input type="email" id="inpage-lead-email" class="form-control" placeholder="admin@tubanca.com" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="inpage-lead-points">N° de Puntos / Agencias Actuales *</label>
-              <select id="inpage-lead-points" class="form-control">
-                <option value="5">Hasta 5 Agencias (Básico)</option>
-                <option value="10" selected>6 a 10 Agencias</option>
-                <option value="20">11 a 20 Agencias</option>
-                <option value="50">Más de 20 Agencias (Red Grande)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inpage-lead-plan">Plan Seleccionado *</label>
-              <select id="inpage-lead-plan" class="form-control" style="border-color: rgba(2, 171, 33, 0.5); background: rgba(15, 23, 42, 0.9);">
-                <option value="Plan Básico">Plan Básico ($150/mes)</option>
-                <option value="Plan Profesional" selected>Plan Profesional ($250/mes) ⭐ Más Elegido</option>
-                <option value="Plan Elite">Plan Elite Enterprise ($500/mes) 🚀 Ilimitado</option>
-                <option value="Demostración General">Solo Demostración General</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="inpage-lead-state">Ubicación (Estado / Ciudad)</label>
-              <input type="text" id="inpage-lead-state" class="form-control" placeholder="Ej: Caracas, Miranda, Carabobo, Zulia">
-            </div>
-            <div class="form-group">
-              <label for="inpage-lead-address">Dirección o Sede Central</label>
-              <input type="text" id="inpage-lead-address" class="form-control" placeholder="Ej: Av. Principal, Edificio Central">
-            </div>
-          </div>
-
-          <button type="submit" id="inpage-submit-btn" class="btn btn-primary btn-lg pulse-glow" style="width: 100%; margin-top: 14px; font-size: 1.05rem;">
-            🚀 Completar Registro y Activar en CRM
-          </button>
-
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 16px; flex-wrap: wrap; gap: 8px;">
-            <span style="font-size: 0.78rem; color: #64748b;">🔒 Datos encriptados y procesados de forma confidencial.</span>
-            <a href="https://crm.multibancaexpress.com" target="_blank" style="font-size: 0.85rem; color: #38bdf8; text-decoration: none; font-weight: 600;">¿Ya tienes cuenta? Iniciar Sesión en el CRM →</a>
-          </div>
-        </form>
-
       </div>
     </div>
   </section>
 
   <!-- =========================================================================
-       8. TESTIMONIOS Y CASOS DE ÉXITO
+       9. PREGUNTAS FRECUENTES (FAQ)
        ========================================================================= -->
-  <section class="section" id="testimonios">
+  <section class="section faq-section" id="faq">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Testimonios de Clientes</span>
-        <h2>La Confianza de Quienes <span class="gradient-text">Lideran el Sector</span></h2>
-        <p class="section-subtitle">Descubre cómo los administradores de bancas transformaron su rentabilidad y tranquilidad operativa.</p>
+      <div class="section-header text-center">
+        <span class="section-tag">RESOLVEMOS TUS DUDAS</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
       </div>
 
-      <div class="testimonials-grid">
-        
-        <div class="glass-card testimonial-card">
-          <div>
-            <div class="star-rating">★★★★★</div>
-            <p class="testimonial-quote">"Pasamos de tardar casi 4 horas diarias cuadrando pagos móviles y notas de entrega a tener la Pizarra al día en minutos. Las referencias duplicadas desaparecieron por completo."</p>
+      <div class="faq-accordion">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <span>¿Cuánto tiempo toma la activación de mi cuenta?</span>
+            <span class="faq-toggle">+</span>
           </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">MR</div>
-            <div>
-              <div class="author-name">Mauricio R.</div>
-              <div class="author-role">Director de Red (24 Agencias)</div>
-            </div>
+          <div class="faq-answer">
+            <p>La activación es prácticamente instantánea. En cuanto completas tu registro, nuestro equipo valida tu solicitud a través de la consola administrativa SaaS y te envía tus credenciales de acceso directo por WhatsApp y correo electrónico en menos de 5 minutos.</p>
           </div>
         </div>
 
-        <div class="glass-card testimonial-card">
-          <div>
-            <div class="star-rating">★★★★★</div>
-            <p class="testimonial-quote">"El módulo de cobradores en ruta con QR fue el antes y el después para nuestra banca. Los cobradores ya no tienen discusiones con caja y el dinero ingresa cuadrado al 100%."</p>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Qué hardware necesito para las taquillas y agencias?</span>
+            <span class="faq-toggle">+</span>
           </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">AL</div>
-            <div>
-              <div class="author-name">Alejandro L.</div>
-              <div class="author-role">Operador y Administrador Regional</div>
-            </div>
+          <div class="faq-answer">
+            <p>Multibanca Express es 100% web. Solo requieres cualquier computadora, laptop, teléfono inteligente o tablet con conexión a Internet. Para imprimir tickets es compatible con cualquier impresora térmica estándar de 58mm u 80mm vía USB o Bluetooth (ESC/POS).</p>
           </div>
         </div>
 
-        <div class="glass-card testimonial-card">
-          <div>
-            <div class="star-rating">★★★★★</div>
-            <p class="testimonial-quote">"El soporte multi-moneda es impecable. Manejamos bolívares, dólares y pesos simultáneamente sin que se descuadre ni un centavo en la Caja Maestra al final de la semana."</p>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cómo funciona el control multi-moneda (BS, USD, COP)?</span>
+            <span class="faq-toggle">+</span>
           </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">DP</div>
-            <div>
-              <div class="author-name">Diana P.</div>
-              <div class="author-role">Gerente de Finanzas y Control</div>
-            </div>
+          <div class="faq-answer">
+            <p>El sistema maneja saldos independientes por cada moneda en tiempo real. En la Caja Maestra y en los cierres de agencia puedes verificar exactamente cuánto ingresó en Bolívares por Pago Móvil, cuánto en Dólares en efectivo y cuánto en Pesos Colombianos, sin mezclar tasas ni generar diferencias contables.</p>
           </div>
         </div>
 
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿En qué consiste la Auditoría Híbrida Oficial vs Taquilla?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Es una tecnología exclusiva del Plan Elite que cruza automáticamente las ventas oficiales reportadas por los servidores de las operadoras con los registros físicos cargados por los cajeros en las agencias. Si existe alguna diferencia o ticket omitido, el sistema lo resalta al instante para que no pagues comisiones sobre ventas inexistentes.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================================================
-       8. PREGUNTAS FRECUENTES (FAQ)
-       ========================================================================= -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Resuelve tus Dudas</span>
-        <h2>Preguntas <span class="gradient-text-cyan">Frecuentes</span></h2>
-        <p class="section-subtitle">Todo lo que necesitas saber antes de comenzar a operar con Gestión SaaS.</p>
-      </div>
-
-      <div class="faq-container">
-        
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>¿Cómo se implementa el sistema en mis agencias y cuánto tarda?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            Al ser un software 100% en la nube, no requiere instalaciones complejas en servidores locales. Tu cuenta queda activa el mismo día y la parametrización de tus monedas, agencias y cuentas bancarias toma menos de 24 horas con nuestro acompañamiento inicial.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>¿Es compatible con teléfonos móviles, tablets y computadoras?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            Sí. El sistema está totalmente optimizado para funcionar desde navegadores en smartphones (Android y iOS), tablets y cualquier computadora de escritorio o laptop sin necesidad de hardware costoso.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>¿Cómo funciona la liquidación por QR de los cobradores?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            Cada cobrador tiene su acceso seguro donde registra lo recaudado. Cuando llega a la oficina o punto de entrega, presiona "Generar Pase QR". El administrador o cajero escanea dicho código en pantalla y el sistema concilia automáticamente el traspaso de fondos, cerrando la ruta del cobrador al instante.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>¿Mis datos financieros y de ventas están seguros?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            Absolutamente. La infraestructura utiliza bases de datos PostgreSQL de alto rendimiento con cifrado SSL/TLS, políticas estrictas de seguridad por usuario (Row Level Security) y respaldos automáticos diarios. Tus datos son privados y sólo accesibles por tu administración.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>¿Puedo cambiar de plan a medida que crezca el número de mis agencias?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            Sí, puedes empezar con el Plan Básico y escalar al Plan Profesional o Elite en cualquier momento sin interrupciones en el servicio ni pérdida de tu historial operativo.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       9. MODAL INTERACTIVO DE PROSPECCIÓN Y AGENDAMIENTO DE DEMO
-       ========================================================================= -->
-  <div class="modal-overlay" id="lead-modal-overlay">
-    <div class="lead-modal">
-      <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar Modal">✕</button>
-      
-      <div class="modal-header">
-        <span class="section-tag" style="margin-bottom: 8px;">Registro y Demostración</span>
-        <h3 id="modal-title">Agenda una Demo en Vivo</h3>
-        <p id="modal-subtitle" style="font-size: 0.88rem; color: #94a3b8; margin-top: 6px;">Un especialista te mostrará el sistema funcionando con los datos de tu negocio.</p>
-      </div>
-
-      <form class="lead-form" id="lead-capture-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lead-name">Nombre y Apellido del Representante *</label>
-            <input type="text" id="lead-name" class="form-control" placeholder="Ej: Juan Pérez" required>
-          </div>
-          <div class="form-group">
-            <label for="lead-business">Nombre de la Banca / Operadora *</label>
-            <input type="text" id="lead-business" class="form-control" placeholder="Ej: Inversiones El Trébol" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lead-phone">Número de WhatsApp *</label>
-            <input type="tel" id="lead-phone" class="form-control" placeholder="+58 412 1234567" required>
-          </div>
-          <div class="form-group">
-            <label for="lead-email">Correo Electrónico</label>
-            <input type="email" id="lead-email" class="form-control" placeholder="admin@banca.com">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lead-points">N° de Puntos / Agencias</label>
-            <select id="lead-points" class="form-control">
-              <option value="5">Hasta 5 Agencias (Básico)</option>
-              <option value="10" selected>6 a 10 Agencias</option>
-              <option value="20">11 a 20 Agencias</option>
-              <option value="50">Más de 20 Agencias (Red Grande)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="lead-plan">Plan de Interés</label>
-            <select id="lead-plan" class="form-control">
-              <option value="Demostración General">Demostración General</option>
-              <option value="Plan Básico">Plan Básico ($150/mes)</option>
-              <option value="Plan Profesional">Plan Profesional ($250/mes)</option>
-              <option value="Plan Elite">Plan Elite Enterprise ($500/mes)</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lead-state">Ubicación (Estado / Ciudad)</label>
-            <input type="text" id="lead-state" class="form-control" placeholder="Ej: Caracas, Miranda, Zulia">
-          </div>
-          <div class="form-group">
-            <label for="lead-address">Dirección o Sede Principal</label>
-            <input type="text" id="lead-address" class="form-control" placeholder="Ej: Av. Bolívar, Local 12">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="lead-date">Fecha tentativa para la llamada / activación</label>
-          <input type="date" id="lead-date" class="form-control">
-        </div>
-
-        <button type="submit" id="modal-submit-btn" class="btn btn-primary pulse-glow" style="width: 100%; margin-top: 10px;">
-          🚀 Enviar Registro y Conectar con Asesor
-        </button>
-        <p style="text-align: center; font-size: 0.75rem; color: #64748b; margin-top: 6px;">
-          🔒 Tus datos son confidenciales y se guardan directamente en el sistema de gestión.
-        </p>
-      </form>
-    </div>
-  </div>
-
-  <!-- =========================================================================
-       10. FOOTER COMERCIAL & STICKY MOBILE BAR
+       10. FOOTER
        ========================================================================= -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        
-        <div class="footer-brand">
-          <div class="brand-logo" style="margin-bottom: 14px;">
-            <img src="assets/logo.svg" alt="Multibanca Express" class="brand-logo-img">
-          </div>
-          <p>La plataforma operativa y de control financiero más avanzada para bancas, agencias de lotería y salas de apuestas.</p>
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <img src="assets/logo.svg" alt="Multibanca Express" class="footer-logo">
+        <p class="footer-desc">
+          Plataforma tecnológica de gestión financiera, operativa y logística para bancas de lotería, taquillas de apuestas y operadoras de juego en Latinoamérica.
+        </p>
+        <div class="footer-status-pill">
+          <span class="status-dot-green"></span>
+          <span>Sistemas Operativos 100% Online</span>
         </div>
-
-        <div class="footer-col">
-          <h4>Módulos</h4>
-          <ul class="footer-links">
-            <li><a href="#modulos">Pizarra de Confirmaciones</a></li>
-            <li><a href="#modulos">Cobradores en Ruta QR</a></li>
-            <li><a href="#modulos">Caja Maestra Multi-Moneda</a></li>
-            <li><a href="#modulos">Liquidación de Agencias</a></li>
-            <li><a href="#modulos">Auditoría Híbrida</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Planes y Precios</h4>
-          <ul class="footer-links">
-            <li><a href="#planes">Plan Básico (SaaS)</a></li>
-            <li><a href="#planes">Plan Profesional</a></li>
-            <li><a href="#planes">Plan Elite Enterprise</a></li>
-            <li><a href="#calculadora">Calculadora de ROI</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Acceso & Contacto</h4>
-          <ul class="footer-links">
-            <li><a href="https://crm.multibancaexpress.com" target="_blank" style="color: #4ade80; font-weight: 700;">🔑 Iniciar Sesión en el CRM</a></li>
-            <li><a href="#" onclick="openDemoModal('Demostración General', true); return false;" style="color: #38bdf8; font-weight: 700;">📝 Registrar Nueva Cuenta</a></li>
-            <li><a href="#" onclick="contactWhatsAppDirect(); return false;">💬 Asesor WhatsApp</a></li>
-            <li><a href="mailto:ventas@multibancaexpress.com">✉️ Soporte Comercial</a></li>
-          </ul>
-        </div>
-
       </div>
 
-      <div class="footer-bottom">
-        <p>© 2026 Multibanca Express. Todos los derechos reservados. Diseñado para alta disponibilidad y máxima rentabilidad comercial.</p>
+      <div class="footer-col">
+        <h4>Ecosistema</h4>
+        <ul>
+          <li><a href="https://crm.multibancaexpress.com" target="_blank">🔑 CRM Operadora</a></li>
+          <li><a href="https://taq.multibancaexpress.com" target="_blank">🎟️ Terminal Taquilla POS</a></li>
+          <li><a href="https://sus.multibancaexpress.com" target="_blank">💎 Gestión SaaS Admin</a></li>
+          <li><a href="#planes">💰 Planes y Tarifas</a></li>
+          <li><a href="#calculadora">🧮 Calculadora ROI</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Módulos Clave</h4>
+        <ul>
+          <li><a href="#modulos">Pizarra de Confirmaciones</a></li>
+          <li><a href="#modulos">Caja Maestra Multi-Moneda</a></li>
+          <li><a href="#modulos">Auditoría Híbrida Oficial</a></li>
+          <li><a href="#modulos">Cobradores en Ruta QR</a></li>
+          <li><a href="#taquilla">Tickets Térmicos ESC/POS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto Oficial</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="contactWhatsAppDirect()">💬 WhatsApp Soporte</a></li>
+          <li><a href="mailto:soporte@multibancaexpress.com">📧 soporte@multibancaexpress.com</a></li>
+          <li><span>📍 Maracaibo • Caracas • Cúcuta</span></li>
+          <li><a href="#registro" class="footer-cta-link">📝 Solicitar Activación</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>© 2026 Multibanca Express. Todos los derechos reservados.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Términos del Servicio</a>
+          <a href="#">Políticas de Privacidad</a>
+          <a href="#">Seguridad y Cifrado</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Sticky Bar para Móviles -->
-  <div class="mobile-sticky-bar">
-    <div class="mobile-sticky-inner">
-      <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">
-        🔑 CRM
-      </a>
-      <button class="btn btn-primary btn-sm" onclick="openDemoModal('Demostración General', true)" style="flex: 1;">
-        📝 Registro
-      </button>
-      <button class="btn btn-whatsapp btn-sm" onclick="contactWhatsAppDirect()">
-        💬 WhatsApp
-      </button>
+  <!-- =========================================================================
+       11. MODAL DE REGISTRO FLOTANTE
+       ========================================================================= -->
+  <div class="modal-overlay" id="lead-modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar">&times;</button>
+      
+      <div class="modal-header">
+        <h3 id="modal-title">📝 Registrarse en Multibanca Express</h3>
+        <p id="modal-subtitle">Completa tus datos para crear tu expediente y activar tu acceso de inmediato.</p>
+      </div>
+
+      <form id="lead-capture-form" class="modal-form">
+        <div class="form-group">
+          <label for="lead-name">👤 Nombre y Apellido del Representante *</label>
+          <input type="text" id="lead-name" class="form-input" placeholder="Ej: Carlos Mendoza" required>
+        </div>
+
+        <div class="form-group">
+          <label for="lead-business">🏢 Nombre de la Banca / Negocio *</label>
+          <input type="text" id="lead-business" class="form-input" placeholder="Ej: Inversiones La Fortuna" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lead-phone">📱 WhatsApp de Contacto *</label>
+            <input type="tel" id="lead-phone" class="form-input" placeholder="Ej: +58 412 1234567" required>
+          </div>
+          <div class="form-group">
+            <label for="lead-email">📧 Correo Electrónico</label>
+            <input type="email" id="lead-email" class="form-input" placeholder="contacto@labanca.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lead-points">📍 N° de Puntos / Agencias</label>
+            <select id="lead-points" class="form-select">
+              <option value="5">1 a 5 Puntos de Venta</option>
+              <option value="10" selected>6 a 15 Puntos de Venta</option>
+              <option value="20">16 a 30 Puntos de Venta</option>
+              <option value="50">30 a 50+ Puntos de Venta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="lead-plan">💎 Plan Seleccionado</label>
+            <select id="lead-plan" class="form-select">
+              <option value="Básico (SaaS)">Plan Básico ($150 / $5 por punto)</option>
+              <option value="Profesional" selected>Plan Profesional ($250 / $8 por punto)</option>
+              <option value="Elite">Plan Elite Enterprise ($500 / $12 por punto)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lead-state">📍 Ubicación (Estado / Ciudad)</label>
+            <input type="text" id="lead-state" class="form-input" placeholder="Ej: Zulia, Maracaibo">
+          </div>
+          <div class="form-group">
+            <label for="lead-address">📫 Dirección o Sede</label>
+            <input type="text" id="lead-address" class="form-input" placeholder="Sede principal...">
+          </div>
+        </div>
+
+        <button type="submit" id="modal-submit-btn" class="btn btn-primary btn-block btn-lg pulse-glow" style="margin-top: 15px;">
+          <span>🚀 Completar Registro y Activar en WhatsApp</span>
+        </button>
+      </form>
     </div>
   </div>
 
+  <!-- Barra móvil fija inferior -->
+  <div class="mobile-sticky-bar">
+    <a href="https://crm.multibancaexpress.com" target="_blank" class="msb-item">
+      <span>🔑</span>
+      <span>CRM</span>
+    </a>
+    <a href="https://taq.multibancaexpress.com" target="_blank" class="msb-item">
+      <span>🎟️</span>
+      <span>Taquilla</span>
+    </a>
+    <a href="#registro" class="msb-item highlight" onclick="openRegistrationModal('Profesional', 5)">
+      <span>📝</span>
+      <span>Registro</span>
+    </a>
+    <a href="javascript:void(0)" onclick="contactWhatsAppDirect()" class="msb-item">
+      <span>💬</span>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+
   <!-- Scripts -->
-  <script src="js/calculator.js?v=3.0"></script>
-  <script src="js/leads.js?v=3.0"></script>
-  <script src="js/app.js?v=3.0"></script>
+  <script src="js/calculator.js?v=3.2"></script>
+  <script src="js/leads.js?v=3.2"></script>
+  <script src="js/app.js?v=3.2"></script>
 
 </body>
 </html>

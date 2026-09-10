@@ -30,7 +30,7 @@ rm -rf "$TEMP_DIR"
 git clone --depth 1 "$REPO_URL" "$TEMP_DIR"
 
 # 4. Crear carpeta de producción y copiar archivos
-echo "📂 Copiando archivos a $WEB_ROOT..."
+echo "📁 Copiando archivos a $WEB_ROOT..."
 mkdir -p "$WEB_ROOT"
 rm -rf "$WEB_ROOT"/*
 cp -r "$TEMP_DIR"/* "$WEB_ROOT/"
@@ -60,4 +60,4 @@ systemctl reload nginx
 echo "=========================================================================="
 echo "✅ ¡DESPLIEGUE EXITOSO!"
 echo "🌐 Landing Page en vivo en: https://$DOMAIN"
-echo "=========================================================================="
+echo "=========================================================================="\n

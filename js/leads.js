@@ -1,81 +1,46 @@
 /**
- * LEADS.JS - Gestión de Registro, Formulario Directo, Supabase Sync y WhatsApp
- * Version: 3.0 (Zero-Cache Compatible)
+ * LEADS.JS - Captura y Gestión de Solicitudes en Tiempo Real
+ * Conexión segura con Supabase y WhatsApp estructurado
  */
 
-const WHATSAPP_PHONE_DEFAULT = "19542259188"; // Número comercial (+1 954 225-9188)
+const WHATSAPP_PHONE_DEFAULT = '584126848984'; // Número oficial de soporte comercial
 
-// Función para navegar y seleccionar plan en el formulario de la página
-window.goToRegisterForm = (planName) => {
-  const inpagePlan = document.getElementById('inpage-lead-plan');
-  if (inpagePlan && planName) {
-    for (let opt of inpagePlan.options) {
-      if (opt.value.toLowerCase().includes(planName.toLowerCase()) || planName.toLowerCase().includes(opt.value.toLowerCase())) {
-        inpagePlan.value = opt.value;
-        break;
-      }
-    }
-  }
-
-  const regSection = document.getElementById('registro');
-  if (regSection) {
-    regSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    const card = regSection.querySelector('.glass-card');
-    if (card) {
-      card.style.transition = 'all 0.5s ease';
-      card.style.boxShadow = '0 0 45px rgba(2, 171, 33, 0.7)';
-      card.style.borderColor = '#4ade80';
-      setTimeout(() => {
-        card.style.boxShadow = '0 15px 40px rgba(0,0,0,0.5)';
-        card.style.borderColor = 'rgba(2, 171, 33, 0.35)';
-      }, 2500);
-    }
-    const nameInput = document.getElementById('inpage-lead-name');
-    if (nameInput) {
-      setTimeout(() => nameInput.focus(), 600);
-    }
-  }
-};
-
-// Abrir Modal de Demostración o Registro
-window.openDemoModal = (preselectedPlan = 'Demostración General', isRegistration = false) => {
+// Abrir Modal de Registro con datos precargados
+window.openRegistrationModal = (preselectedPlan = 'Profesional', preselectedPoints = 5) => {
   const modal = document.getElementById('lead-modal-overlay');
   const planInput = document.getElementById('lead-plan');
+  const pointsInput = document.getElementById('lead-points');
   const modalTitle = document.getElementById('modal-title');
   const modalSubtitle = document.getElementById('modal-subtitle');
   const submitBtn = document.getElementById('modal-submit-btn');
 
   if (planInput && preselectedPlan) {
-    let planFound = false;
     for (let opt of planInput.options) {
-      if (opt.value.toLowerCase().includes(preselectedPlan.toLowerCase()) || preselectedPlan.toLowerCase().includes(opt.value.toLowerCase())) {
+      if (opt.text.toLowerCase().includes(preselectedPlan.toLowerCase()) || opt.value.toLowerCase().includes(preselectedPlan.toLowerCase())) {
         planInput.value = opt.value;
-        planFound = true;
         break;
       }
     }
-    if (!planFound && preselectedPlan) {
-      planInput.value = preselectedPlan;
-    }
+  }
+
+  if (pointsInput && preselectedPoints) {
+    pointsInput.value = preselectedPoints;
   }
 
   if (modalTitle && modalSubtitle && submitBtn) {
-    if (isRegistration || (preselectedPlan && preselectedPlan !== 'Demostración General')) {
-      const planText = preselectedPlan.startsWith('Plan') ? preselectedPlan : `Plan ${preselectedPlan}`;
-      modalTitle.innerHTML = `📝 Registrarse - <span style="color: #4ade80;">${planText}</span>`;
-      modalSubtitle.innerText = 'Completa tus datos para crear tu expediente y activar tu acceso en Multibanca Express.';
-      submitBtn.innerHTML = '🚀 Completar Registro y Activar en WhatsApp';
-    } else {
-      modalTitle.innerText = 'Agenda una Demo en Vivo';
-      modalSubtitle.innerText = 'Un especialista te mostrará el sistema funcionando con los datos de tu negocio.';
-      submitBtn.innerHTML = '🚀 Confirmar y Abrir WhatsApp Directo';
-    }
+    modalTitle.innerHTML = `📝 Registrarse - <span style="color: #10b981;">${preselectedPlan}</span>`;
+    modalSubtitle.innerText = 'Completa tus datos para registrar tu negocio y activar tu acceso de inmediato.';
+    submitBtn.innerHTML = '🚀 Completar Registro y Activar en WhatsApp';
   }
 
   if (modal) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+};
+
+window.openDemoModal = (plan = 'Demostración General') => {
+  window.openRegistrationModal(plan, 5);
 };
 
 // Cerrar Modal
@@ -99,7 +64,7 @@ window.showToast = (message, icon = '✅') => {
 
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+  toast.innerHTML = `<span style="font-size: 1.2rem;">${icon}</span> <span>${message}</span>`;
   container.appendChild(toast);
 
   setTimeout(() => {
@@ -134,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', window.closeDemoModal);
   }
 
-  // Función genérica para procesar registro (modal o inpage)
+  // Función genérica para procesar registro
   const processRegistration = async ({ name, business, phone, email, pointsRaw, plan, state, address, submitBtn, isModal = false }) => {
     if (!name || !phone || !business) {
       window.showToast('Por favor completa todos los campos requeridos (*)', '⚠️');
@@ -145,10 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const parsedPoints = parseInt(pointsRaw);
     if (!isNaN(parsedPoints)) {
       numericPoints = parsedPoints;
-    } else if (pointsRaw.includes('16') || pointsRaw.includes('30')) {
-      numericPoints = 20;
-    } else if (pointsRaw.includes('6') || pointsRaw.includes('15')) {
-      numericPoints = 10;
     }
 
     const originalBtnText = submitBtn.innerHTML;
@@ -162,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('saas_leads', JSON.stringify(savedLeads));
     } catch (e) {}
 
-    // 2. Enviar a Supabase vía Proxy Endpoint Nginx
+    // 2. Enviar a Supabase vía Proxy Endpoint Nginx /api/leads
     try {
       const response = await fetch('/api/leads', {
         method: 'POST',
@@ -178,15 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       });
       if (response.ok) {
-        window.showToast('¡Registro guardado con éxito en el sistema CRM!', '🎉');
-      } else {
-        console.warn('Respuesta de API:', await response.text());
+        window.showToast('¡Registro guardado con éxito en el sistema!', '🎉');
       }
     } catch (dbErr) {
       console.error('Error enviando lead a Supabase:', dbErr);
     }
 
-    // 3. WhatsApp Message
+    // 3. Mensaje Estructurado para WhatsApp
     const waMessage = 
 `👋 *SOLICITUD DE REGISTRO / PLAN - MULTIBANCA EXPRESS*
 ----------------------------------
@@ -194,12 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
 🏢 *Banca / Operadora:* ${business}
 📱 *WhatsApp:* ${phone}
 📧 *Email:* ${email || 'No especificado'}
-🏪 *N° de Agencias/Puntos:* ${numericPoints}
+📍 *N° de Agencias/Puntos:* ${numericPoints}
 💎 *Plan Seleccionado:* ${plan}
 📍 *Ubicación:* ${state || 'No especificada'}
 📫 *Dirección:* ${address || 'No especificada'}
 ----------------------------------
-_Registro generado desde la web oficial de Multibanca Express._`;
+_Registro oficial generado desde webapp.multibancaexpress.com_`;
 
     submitBtn.disabled = false;
     submitBtn.innerHTML = '✅ ¡Registro Completado!';
@@ -215,7 +174,7 @@ _Registro generado desde la web oficial de Multibanca Express._`;
       submitBtn.innerHTML = originalBtnText;
       const url = `https://wa.me/${WHATSAPP_PHONE_DEFAULT}?text=${encodeURIComponent(waMessage)}`;
       window.open(url, '_blank');
-    }, 900);
+    }, 800);
   };
 
   // Manejar envío formulario In-Page

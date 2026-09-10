@@ -38,4 +38,4 @@ jobs:
             fi
 
             nginx -t && systemctl reload nginx
-            echo "✅ ¡Landing Page actualizada y en vivo en https://webapp.multibancaexpress.com!"
+            echo "✅ ¡Landing Page actualizada y en vivo en https://webapp.multibancaexpress.com!"\n

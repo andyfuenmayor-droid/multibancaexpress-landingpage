@@ -1,74 +1,117 @@
 /**
  * CALCULATOR.JS - Calculadora dinámica de ROI y Cotizador en tiempo real
+ * Sincronizado con el catálogo oficial de Multibanca Express
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const agenciasRange = document.getElementById('calc-agencias');
   const agenciasDisplay = document.getElementById('calc-agencias-val');
   
-  const txRange = document.getElementById('calc-tx');
-  const txDisplay = document.getElementById('calc-tx-val');
-
+  const planRadios = document.querySelectorAll('input[name="calc-plan-choice"]');
   const recPlanName = document.getElementById('rec-plan-name');
+  const planBadgeDesc = document.getElementById('calc-plan-desc');
   const savedHours = document.getElementById('calc-saved-hours');
   const leakageSaved = document.getElementById('calc-leakage-saved');
   const totalPrice = document.getElementById('calc-total-price');
+  const formulaBreakdown = document.getElementById('calc-formula-breakdown');
+  const hireBtn = document.getElementById('calc-hire-btn');
 
-  // Billing cycle state
+  // Planes oficiales
+  const PLAN_RATES = {
+    'basico': {
+      name: 'Básico (SaaS)',
+      base: 150,
+      perPoint: 5,
+      modules: '16 / 23 módulos',
+      desc: 'Gestión operativa completa de agencias hasta Caja Maestra.'
+    },
+    'profesional': {
+      name: 'Profesional',
+      base: 250,
+      perPoint: 8,
+      modules: '21 / 23 módulos',
+      desc: 'Gestión integral de Agencias, Operadoras y Proveedores.'
+    },
+    'elite': {
+      name: 'Elite Enterprise',
+      base: 500,
+      perPoint: 12,
+      modules: '23 / 23 módulos (Control Total)',
+      desc: 'Control total sin límites: Incluye Auditoría Híbrida y Gastos Administrativos.'
+    }
+  };
+
+  let selectedPlanKey = 'profesional';
   let isAnnual = false;
 
   const calculateROI = () => {
-    const agencias = parseInt(agenciasRange.value, 10);
-    const tx = parseInt(txRange.value, 10);
+    const agencias = parseInt(agenciasRange ? agenciasRange.value : '10', 10);
+    if (agenciasDisplay) agenciasDisplay.textContent = agencias;
 
-    agenciasDisplay.textContent = agencias;
-    txDisplay.textContent = tx.toLocaleString('es-ES');
+    // Obtener plan seleccionado
+    const planInfo = PLAN_RATES[selectedPlanKey] || PLAN_RATES['profesional'];
 
-    // 1. Determinar Plan Recomendado
-    let plan = 'Básico (SaaS)';
-    let basePrice = 150;
-    let costPerPoint = 5;
+    if (recPlanName) recPlanName.textContent = planInfo.name;
+    if (planBadgeDesc) planBadgeDesc.textContent = `${planInfo.modules} • ${planInfo.desc}`;
 
-    if (agencias > 15 || tx > 1200) {
-      plan = 'Elite Enterprise';
-      basePrice = 500;
-      costPerPoint = 12;
-    } else if (agencias > 5 || tx > 500) {
-      plan = 'Profesional';
-      basePrice = 250;
-      costPerPoint = 8;
+    // Cálculo matemático exacto
+    let subtotal = planInfo.base + (agencias * planInfo.perPoint);
+    let finalTotal = isAnnual ? subtotal * 0.85 : subtotal;
+
+    if (totalPrice) {
+      totalPrice.textContent = `$${Math.round(finalTotal)}`;
     }
 
-    recPlanName.textContent = plan;
-
-    // 2. Calcular Inversión Mensual
-    let total = basePrice + (agencias * costPerPoint);
-    if (isAnnual) {
-      total = total * 0.85; // 15% de descuento anual
+    if (formulaBreakdown) {
+      formulaBreakdown.innerHTML = `Base $${planInfo.base} + (${agencias} agencias × $${planInfo.perPoint}) = <b>$${subtotal} USD/mes</b>${isAnnual ? ' <i>(15% Desc. Anual aplicado)</i>' : ''}`;
     }
 
-    totalPrice.textContent = `$${Math.round(total)}`;
+    // Métricas de Ahorro y ROI
+    // Cuadre manual estimado: ~2.5 horas semanales por agencia (10h al mes)
+    const hoursSaved = Math.round(agencias * 9.5);
+    if (savedHours) savedHours.textContent = `${hoursSaved}h / mes`;
 
-    // 3. Métricas de Ahorro y ROI
-    // Estimación: Cada agencia requiere ~2.5 horas semanales de cuadre manual (10 horas al mes)
-    // Con SaaS se reduce a menos de 20 min al mes por agencia.
-    const hoursSavedMonth = Math.round(agencias * 9.5);
-    savedHours.textContent = `${hoursSavedMonth}h`;
+    // Fugas prevenidas (comprobantes bancarios falsos, dobles cobros, descuadres de tasa): ~$28/agencia/mes
+    const leakage = Math.round(agencias * 28 + 45);
+    if (leakageSaved) leakageSaved.textContent = `$${leakage.toLocaleString('es-ES')} USD`;
 
-    // Estimación de prevención de fugas/comprobantes duplicados: ~$15-$30 por agencia/mes
-    const leakageMonth = Math.round(agencias * 28 + (tx * 0.05));
-    leakageSaved.textContent = `$${leakageMonth.toLocaleString('es-ES')}`;
+    // Configurar botón de contratación directa
+    if (hireBtn) {
+      hireBtn.onclick = () => {
+        if (typeof window.openRegistrationModal === 'function') {
+          window.openRegistrationModal(planInfo.name, agencias);
+        } else if (typeof window.openDemoModal === 'function') {
+          window.openDemoModal(planInfo.name);
+        }
+      };
+    }
   };
 
-  if (agenciasRange && txRange) {
+  // Event Listeners
+  if (agenciasRange) {
     agenciasRange.addEventListener('input', calculateROI);
-    txRange.addEventListener('input', calculateROI);
-    calculateROI(); // Inicializar
   }
 
-  // Escuchar cambio en el toggle de facturación si existe
+  planRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      selectedPlanKey = e.target.value;
+      calculateROI();
+    });
+  });
+
+  window.setCalculatorPlan = (planKey) => {
+    if (PLAN_RATES[planKey]) {
+      selectedPlanKey = planKey;
+      const targetRadio = document.querySelector(`input[name="calc-plan-choice"][value="${planKey}"]`);
+      if (targetRadio) targetRadio.checked = true;
+      calculateROI();
+    }
+  };
+
   window.setCalculatorAnnual = (annual) => {
     isAnnual = annual;
     calculateROI();
   };
+
+  calculateROI(); // Iniciar
 });
