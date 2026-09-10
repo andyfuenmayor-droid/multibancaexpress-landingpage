@@ -45,46 +45,47 @@
     <div class="container nav-container">
       <a href="#" class="brand-logo" title="Multibanca Express">
         <img src="assets/logo.svg" alt="Multibanca Express" class="brand-logo-img">
-        <span class="version-badge">v2.5 FINTECH</span>
       </a>
 
       <nav>
         <ul class="nav-links" id="nav-links">
           <li><a href="#ecosistema" class="nav-link">Ecosistema</a></li>
-          <li><a href="#modulos" class="nav-link">23 Módulos</a></li>
+          <li><a href="#modulos" class="nav-link">Módulos</a></li>
           <li><a href="#taquilla" class="nav-link">Terminal POS</a></li>
-          <li><a href="#calculadora" class="nav-link">Calculadora ROI</a></li>
-          <li><a href="#planes" class="nav-link">Planes y Precios</a></li>
-          <li><a href="#registro" class="nav-link" style="color: #4ade80; font-weight: 700;">📝 Registrarse</a></li>
+          <li><a href="#calculadora" class="nav-link">Calculadora</a></li>
+          <li><a href="#planes" class="nav-link">Planes</a></li>
           <li><a href="#faq" class="nav-link">Preguntas</a></li>
-          <!-- Mobile links -->
+          <!-- Mobile only actions inside drawer -->
           <li class="mobile-only-action" style="margin-top: 10px; width: 100%;">
             <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">
-              <span>🔑 Iniciar Sesión en el CRM</span>
+              <span>Ir al CRM Operadora →</span>
             </a>
           </li>
           <li class="mobile-only-action" style="width: 100%;">
             <a href="https://taq.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">
-              <span>🎟️ Terminal Taquilla POS</span>
+              <span>Terminal Taquilla POS →</span>
             </a>
           </li>
           <li class="mobile-only-action" style="width: 100%;">
             <a href="#registro" class="btn btn-primary btn-sm pulse-glow nav-link" style="width: 100%; text-align: center;">
-              <span>📝 Formulario de Registro</span>
+              <span>Registrarse Ahora</span>
             </a>
           </li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm nav-crm-btn" title="Iniciar Sesión en el CRM Operadora">
-          <span>🔑 Ir al CRM</span>
+        <a href="https://crm.multibancaexpress.com" target="_blank" class="btn-crm-nav" title="Ingresar al CRM Operadora">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Ir al CRM</span>
         </a>
         <a href="#registro" class="btn btn-primary btn-sm pulse-glow nav-reg-btn" title="Ir al Formulario de Registro">
-          <span>📝 Registrarse</span>
+          <span>Registrarse</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         <button class="btn btn-whatsapp btn-sm nav-wa-btn" onclick="contactWhatsAppDirect()" title="Contactar por WhatsApp">
-          <span>💬 WhatsApp</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.586 1.761.88 2.796.88 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.767-5.768-5.767zm0 10.457c-.896 0-1.635-.25-2.342-.712l-.167-.107-1.748.459.467-1.705-.11-.176c-.512-.816-.782-1.624-.781-2.45.001-2.583 2.102-4.684 4.682-4.684 2.582 0 4.683 2.101 4.683 4.684 0 2.583-2.101 4.684-4.683 4.684zm3.036-3.488c-.166-.083-.984-.486-1.137-.541-.152-.056-.263-.083-.374.083-.111.167-.43.541-.527.652-.097.111-.194.125-.36.042-.167-.083-.703-.259-1.34-1.026-.496-.597-.83-1.336-.927-1.502-.097-.167-.01-.257.073-.34.075-.074.167-.194.25-.291.083-.097.111-.167.166-.277.056-.111.028-.208-.014-.291-.042-.083-.374-.901-.513-1.234-.135-.325-.272-.28-.374-.286l-.319-.004c-.111 0-.291.042-.444.208-.152.167-.582.569-.582 1.387 0 .818.596 1.609.679 1.72.083.111 1.173 1.791 2.842 2.512 1.669.721 1.669.481 1.974.451.305-.03.984-.402 1.123-.79.138-.388.138-.721.097-.79-.041-.07-.152-.111-.318-.194z"/></svg>
+          <span>WhatsApp</span>
         </button>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir Menú">☰</button>
       </div>
@@ -116,16 +117,20 @@
 
         <div class="hero-cta-group">
           <a href="#registro" class="btn btn-primary btn-lg pulse-glow">
-            <span>📝 Comenzar Registro Ahora →</span>
+            <span>Comenzar Registro Ahora</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
           <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-lg" title="Iniciar Sesión en el CRM Operadora">
-            <span>🔑 Iniciar Sesión en el CRM</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Iniciar Sesión en el CRM</span>
           </a>
           <a href="https://taq.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-lg" title="Abrir Terminal Taquilla">
-            <span>🎟️ Terminal Taquilla POS</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span>Terminal Taquilla POS</span>
           </a>
           <a href="#planes" class="btn btn-secondary btn-lg">
-            <span>Ver Planes y Precios ↓</span>
+            <span>Ver Planes y Precios</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
           </a>
         </div>
 
@@ -1283,13 +1288,14 @@
   <div class="mobile-sticky-bar">
     <div class="mobile-sticky-inner">
       <a href="#registro" class="btn btn-primary btn-sm pulse-glow">
-        <span>📝 Registrarse</span>
+        <span>Registrarse</span>
       </a>
       <a href="https://crm.multibancaexpress.com" target="_blank" class="btn btn-secondary btn-sm">
-        <span>🔑 CRM</span>
+        <span>CRM</span>
       </a>
       <button class="btn btn-whatsapp btn-sm" onclick="contactWhatsAppDirect()">
-        <span>💬 WhatsApp</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.586 1.761.88 2.796.88 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.767-5.768-5.767zm0 10.457c-.896 0-1.635-.25-2.342-.712l-.167-.107-1.748.459.467-1.705-.11-.176c-.512-.816-.782-1.624-.781-2.45.001-2.583 2.102-4.684 4.682-4.684 2.582 0 4.683 2.101 4.683 4.684 0 2.583-2.101 4.684-4.683 4.684zm3.036-3.488c-.166-.083-.984-.486-1.137-.541-.152-.056-.263-.083-.374.083-.111.167-.43.541-.527.652-.097.111-.194.125-.36.042-.167-.083-.703-.259-1.34-1.026-.496-.597-.83-1.336-.927-1.502-.097-.167-.01-.257.073-.34.075-.074.167-.194.25-.291.083-.097.111-.167.166-.277.056-.111.028-.208-.014-.291-.042-.083-.374-.901-.513-1.234-.135-.325-.272-.28-.374-.286l-.319-.004c-.111 0-.291.042-.444.208-.152.167-.582.569-.582 1.387 0 .818.596 1.609.679 1.72.083.111 1.173 1.791 2.842 2.512 1.669.721 1.669.481 1.974.451.305-.03.984-.402 1.123-.79.138-.388.138-.721.097-.79-.041-.07-.152-.111-.318-.194z"/></svg>
+        <span>WhatsApp</span>
       </button>
     </div>
   </div>
