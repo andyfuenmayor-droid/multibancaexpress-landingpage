@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Básico (SaaS)',
       base: 150,
       perPoint: 5,
+      pointLimit: 15,
       modules: '16 / 23 módulos',
       desc: 'Gestión operativa completa de agencias hasta Caja Maestra.',
       rawModules: []
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Profesional',
       base: 250,
       perPoint: 0,
+      pointLimit: 50,
       modules: '21 / 23 módulos',
       desc: 'Gestión integral de Agencias, Operadoras y Proveedores.',
       rawModules: []
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Elite Enterprise',
       base: 500,
       perPoint: 12,
+      pointLimit: 0,
       modules: '23 / 23 módulos (Control Total)',
       desc: 'Control total sin límites: Incluye Auditoría Híbrida y Gastos Administrativos.',
       rawModules: []
@@ -79,7 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const ptoText = effectivePointCost === 0
         ? `(${agencias} agencias sin costo extra)`
         : `(${agencias} agencias × $${effectivePointCost})`;
-      formulaBreakdown.innerHTML = `Base $${effectiveBase} + ${ptoText} = <b>$${subtotal} USD/mes</b>${isAnnual ? ' <i>(15% Desc. Anual aplicado)</i>' : ''}`;
+      const limitText = (planInfo.pointLimit && Number(planInfo.pointLimit) > 0)
+        ? ` • Límite plan: máx ${planInfo.pointLimit} ag.`
+        : ' • Sin límite de agencias';
+      formulaBreakdown.innerHTML = `Base $${effectiveBase} + ${ptoText} = <b>$${subtotal} USD/mes</b>${limitText}${isAnnual ? ' <i>(15% Desc. Anual aplicado)</i>' : ''}`;
     }
 
     // Métricas de Ahorro y ROI
@@ -135,6 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.costo_por_punto !== undefined && data.costo_por_punto !== null) {
           PLAN_RATES[targetKey].perPoint = Number(data.costo_por_punto);
         }
+        if (data.limite_puntos !== undefined && data.limite_puntos !== null) {
+          PLAN_RATES[targetKey].pointLimit = Number(data.limite_puntos);
+        }
         if (data.descripcion) {
           PLAN_RATES[targetKey].desc = data.descripcion;
         }
@@ -163,6 +172,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pointTagPro) pointTagPro.textContent = formatPointText(PLAN_RATES.profesional.perPoint);
     if (pointTagElite) pointTagElite.textContent = formatPointText(PLAN_RATES.elite.perPoint);
 
+    // 2.1 Actualizar badges de límite de agencias en tarjetas
+    const formatLimitBadge = (lim) => {
+      const n = Number(lim !== undefined && lim !== null ? lim : 0);
+      if (n === 0) return 'Agencias Ilimitadas';
+      return `Hasta ${n} agencias`;
+    };
+
+    const limitValBasico = document.getElementById('point-limit-val-basico');
+    const limitValPro = document.getElementById('point-limit-val-pro');
+    const limitValElite = document.getElementById('point-limit-val-elite');
+    if (limitValBasico) limitValBasico.textContent = formatLimitBadge(PLAN_RATES.basico.pointLimit);
+    if (limitValPro) limitValPro.textContent = formatLimitBadge(PLAN_RATES.profesional.pointLimit);
+    if (limitValElite) limitValElite.textContent = formatLimitBadge(PLAN_RATES.elite.pointLimit);
+
+    // 2.2 Actualizar fila de límite en la matriz comparativa
+    const mLimitBasico = document.getElementById('matrix-limit-basico');
+    const mLimitPro = document.getElementById('matrix-limit-pro');
+    const mLimitElite = document.getElementById('matrix-limit-elite');
+    if (mLimitBasico) mLimitBasico.textContent = formatLimitBadge(PLAN_RATES.basico.pointLimit);
+    if (mLimitPro) mLimitPro.textContent = formatLimitBadge(PLAN_RATES.profesional.pointLimit);
+    if (mLimitElite) mLimitElite.textContent = formatLimitBadge(PLAN_RATES.elite.pointLimit);
+
     // 3. Actualizar descripciones de planes
     const descBasico = document.getElementById('plan-desc-basico');
     const descPro = document.getElementById('plan-desc-pro');
@@ -186,7 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formatPillPrice = (rate) => {
       const p = Number(rate.perPoint);
-      return `$${rate.base} base + $${p}/pto`;
+      const lim = rate.pointLimit && Number(rate.pointLimit) > 0 ? ` (hasta ${rate.pointLimit} ag.)` : '';
+      return `$${rate.base} base + $${p}/pto${lim}`;
     };
 
     if (pillBasico) pillBasico.textContent = formatPillPrice(PLAN_RATES.basico);
@@ -208,11 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let opt of select.options) {
         const val = opt.value.toLowerCase();
         if (val.includes('basic') || val.includes('básic')) {
-          opt.textContent = `Plan Básico ($${PLAN_RATES.basico.base} / $${PLAN_RATES.basico.perPoint} por punto)`;
+          const lim = PLAN_RATES.basico.pointLimit && PLAN_RATES.basico.pointLimit > 0 ? ` - hasta ${PLAN_RATES.basico.pointLimit} ag.` : ' - ilimitado';
+          opt.textContent = `Plan Básico ($${PLAN_RATES.basico.base} / $${PLAN_RATES.basico.perPoint} por punto${lim})`;
         } else if (val.includes('profesional') || val.includes('pro')) {
-          opt.textContent = `Plan Profesional ($${PLAN_RATES.profesional.base} / $${PLAN_RATES.profesional.perPoint} por punto) ⭐`;
+          const lim = PLAN_RATES.profesional.pointLimit && PLAN_RATES.profesional.pointLimit > 0 ? ` - hasta ${PLAN_RATES.profesional.pointLimit} ag.` : ' - ilimitado';
+          opt.textContent = `Plan Profesional ($${PLAN_RATES.profesional.base} / $${PLAN_RATES.profesional.perPoint} por punto${lim}) ⭐`;
         } else if (val.includes('elite')) {
-          opt.textContent = `Plan Elite Enterprise ($${PLAN_RATES.elite.base} / $${PLAN_RATES.elite.perPoint} por punto) 🏆`;
+          const lim = PLAN_RATES.elite.pointLimit && PLAN_RATES.elite.pointLimit > 0 ? ` - hasta ${PLAN_RATES.elite.pointLimit} ag.` : ' - ilimitado';
+          opt.textContent = `Plan Elite Enterprise ($${PLAN_RATES.elite.base} / $${PLAN_RATES.elite.perPoint} por punto${lim}) 🏆`;
         }
       }
     };
