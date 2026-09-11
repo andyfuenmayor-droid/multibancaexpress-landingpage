@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const planRadios = document.querySelectorAll('input[name="calc-plan-choice"]');
   const recPlanName = document.getElementById('rec-plan-name');
   const planBadgeDesc = document.getElementById('calc-plan-desc');
-  const savedHours = document.getElementById('calc-saved-hours');
-  const leakageSaved = document.getElementById('calc-leakage-saved');
+  const recommendationBox = document.getElementById('calc-recommendation-box');
   const totalPrice = document.getElementById('calc-total-price');
   const formulaBreakdown = document.getElementById('calc-formula-breakdown');
   const hireBtn = document.getElementById('calc-hire-btn');
@@ -105,12 +104,95 @@ document.addEventListener('DOMContentLoaded', () => {
       formulaBreakdown.innerHTML = breakdownHtml;
     }
 
-    // Métricas de Ahorro y ROI
-    const hoursSaved = Math.round(agencias * 9.5);
-    if (savedHours) savedHours.textContent = `${hoursSaved}h`;
+    // Recomendación Inteligente de Próximo Plan
+    if (recommendationBox) {
+      let nextKey = null;
+      if (selectedPlanKey === 'basico') nextKey = 'profesional';
+      else if (selectedPlanKey === 'profesional') nextKey = 'elite';
 
-    const leakage = Math.round(agencias * 28 + 45);
-    if (leakageSaved) leakageSaved.textContent = `$${leakage.toLocaleString('es-ES')}`;
+      if (nextKey && PLAN_RATES[nextKey]) {
+        const nextPlan = PLAN_RATES[nextKey];
+        const nextBase = Number(nextPlan.base) || 0;
+        const nextLimit = Number(nextPlan.pointLimit) || 0;
+        const nextPerPoint = Number(nextPlan.perPoint) || 0;
+
+        const nextExtra = nextLimit > 0 ? Math.max(0, agencias - nextLimit) : 0;
+        const nextSubtotal = nextBase + (nextExtra * nextPerPoint);
+        const nextFinal = isAnnual ? nextSubtotal * 0.85 : nextSubtotal;
+
+        // Se activa recomendación cuando el subtotal actual se acerca (>= 85% de la base del siguiente) o supera el siguiente plan
+        const threshold = nextBase * 0.85;
+
+        if (subtotal >= threshold) {
+          recommendationBox.className = 'calc-recommendation-card state-upgrade';
+
+          if (nextSubtotal <= subtotal) {
+            // El usuario paga lo mismo o INCLUSO MENOS en el plan superior (caso de muchas agencias en plan básico)
+            const diffAhorro = Math.round(subtotal - nextSubtotal);
+            const ahorroText = diffAhorro > 0 ? ` (¡Ahorras $${diffAhorro} USD/mes!)` : ' (Mismo costo mensual)';
+            recommendationBox.innerHTML = `
+              <div class="recom-badge-row">
+                <span class="recom-title">💡 ¡Te conviene el Plan ${nextPlan.name}!</span>
+                <span class="recom-tag recom-tag-save">MÁXIMO VALOR</span>
+              </div>
+              <div class="recom-desc">
+                Con tus <b>${agencias} agencias</b>, en <b>${nextPlan.name}</b> pagarías solo <b>$${Math.round(nextFinal)} USD/mes</b>${ahorroText}, con hasta <b>${nextLimit} agencias incluidas</b> y <b>${nextPlan.modules}</b>.
+              </div>
+              <button type="button" class="btn-upgrade-recom" onclick="window.setCalculatorPlan('${nextKey}')">
+                ⚡ Cambiar a Plan ${nextPlan.name}
+              </button>
+            `;
+          } else {
+            // Está muy cerca del siguiente plan (por poca diferencia accede a muchas más ventajas y capacidad)
+            const diffExtra = Math.round(nextSubtotal - subtotal);
+            recommendationBox.innerHTML = `
+              <div class="recom-badge-row">
+                <span class="recom-title">💡 ¿Consideraste el Plan ${nextPlan.name}?</span>
+                <span class="recom-tag recom-tag-upgrade">UPGRADE RECOMENDADO</span>
+              </div>
+              <div class="recom-desc">
+                Por solo <b>+$${diffExtra} USD/mes adicionales</b> das el salto al <b>Plan ${nextPlan.name}</b>: obtienes hasta <b>${nextLimit} agencias incluidas</b> y <b>${nextPlan.modules}</b>.
+              </div>
+              <button type="button" class="btn-upgrade-recom" onclick="window.setCalculatorPlan('${nextKey}')">
+                🚀 Subir a Plan ${nextPlan.name}
+              </button>
+            `;
+          }
+        } else {
+          // El usuario está cómodamente dentro de la capacidad de su plan
+          recommendationBox.className = 'calc-recommendation-card state-optimal';
+          const pct = limitAgencias > 0 ? Math.min(100, Math.round((agencias / limitAgencias) * 100)) : 100;
+          recommendationBox.innerHTML = `
+            <div class="recom-badge-row">
+              <span class="recom-title">✅ Plan Ideal para tu Red</span>
+              <span class="recom-tag recom-tag-optimal">${pct}% Capacidad</span>
+            </div>
+            <div class="recom-desc">
+              Utilizas <b>${agencias} de ${limitAgencias} agencias</b> incluidas en tu plan. Tienes <b>${planInfo.modules}</b> activos y soporte prioritario garantizado.
+            </div>
+            <div class="recom-progress-bar-bg">
+              <div class="recom-progress-bar-fill" style="width: ${pct}%; background: #4ade80;"></div>
+            </div>
+          `;
+        }
+      } else {
+        // Plan Elite Enterprise (máximo nivel)
+        recommendationBox.className = 'calc-recommendation-card state-elite';
+        const pct = limitAgencias > 0 ? Math.min(100, Math.round((agencias / limitAgencias) * 100)) : 100;
+        recommendationBox.innerHTML = `
+          <div class="recom-badge-row">
+            <span class="recom-title">👑 Máxima Cobertura Empresarial</span>
+            <span class="recom-tag recom-tag-elite">PLAN TOP</span>
+          </div>
+          <div class="recom-desc">
+            Disfrutas del <b>100% del sistema (23/23 módulos)</b>: Auditoría Híbrida Oficial vs Taquilla, Gastos Administrativos y capacidad para hasta <b>${limitAgencias} agencias</b>.
+          </div>
+          <div class="recom-progress-bar-bg">
+            <div class="recom-progress-bar-fill" style="width: ${pct}%; background: #a78bfa;"></div>
+          </div>
+        `;
+      }
+    }
 
     // Configurar botón de contratación directa
     if (hireBtn) {
