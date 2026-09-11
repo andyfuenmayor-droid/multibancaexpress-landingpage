@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'basico': {
       name: 'Básico (SaaS)',
       base: 150,
-      perPoint: 5,
-      pointLimit: 15,
+      perPoint: 0,
+      pointLimit: 100,
       modules: '16 / 23 módulos',
       desc: 'Gestión operativa completa de agencias hasta Caja Maestra.',
       rawModules: []
@@ -38,16 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Profesional',
       base: 250,
       perPoint: 0,
-      pointLimit: 50,
+      pointLimit: 200,
       modules: '21 / 23 módulos',
       desc: 'Gestión integral de Agencias, Operadoras y Proveedores.',
       rawModules: []
     },
     'elite': {
       name: 'Elite Enterprise',
-      base: 500,
-      perPoint: 12,
-      pointLimit: 0,
+      base: 300,
+      perPoint: 0,
+      pointLimit: 500,
       modules: '23 / 23 módulos (Control Total)',
       desc: 'Control total sin límites: Incluye Auditoría Híbrida y Gastos Administrativos.',
       rawModules: []
@@ -67,11 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (recPlanName) recPlanName.textContent = planInfo.name;
     if (planBadgeDesc) planBadgeDesc.textContent = `${planInfo.modules} • ${planInfo.desc}`;
 
-    // Cálculo matemático exacto
+    // Cálculo matemático exacto:
+    // El costo base cubre hasta el límite de agencias (pointLimit).
+    // Solo las agencias adicionales por encima del límite se multiplican por el costo adicional por punto.
     const effectivePointCost = planInfo.perPoint !== undefined && planInfo.perPoint !== null ? Number(planInfo.perPoint) : 0;
     const effectiveBase = Number(planInfo.base) || 150;
+    const limitAgencias = planInfo.pointLimit !== undefined && planInfo.pointLimit !== null ? Number(planInfo.pointLimit) : 0;
 
-    let subtotal = effectiveBase + (agencias * effectivePointCost);
+    const extraAgencias = (limitAgencias > 0) ? Math.max(0, agencias - limitAgencias) : 0;
+    const extraCost = extraAgencias * effectivePointCost;
+
+    let subtotal = effectiveBase + extraCost;
     let finalTotal = isAnnual ? subtotal * 0.85 : subtotal;
 
     if (totalPrice) {
@@ -79,13 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (formulaBreakdown) {
-      const ptoText = effectivePointCost === 0
-        ? `(${agencias} agencias sin costo extra)`
-        : `(${agencias} agencias × $${effectivePointCost})`;
-      const limitText = (planInfo.pointLimit && Number(planInfo.pointLimit) > 0)
-        ? ` • Límite plan: máx ${planInfo.pointLimit} ag.`
-        : ' • Sin límite de agencias';
-      formulaBreakdown.innerHTML = `Base $${effectiveBase} + ${ptoText} = <b>$${subtotal} USD/mes</b>${limitText}${isAnnual ? ' <i>(15% Desc. Anual aplicado)</i>' : ''}`;
+      let breakdownHtml = '';
+      if (limitAgencias > 0) {
+        if (extraAgencias > 0) {
+          const costPart = effectivePointCost > 0
+            ? `(${extraAgencias} ag. adicionales × $${effectivePointCost})`
+            : `(${extraAgencias} ag. adicionales sin costo extra)`;
+          breakdownHtml = `Base $${effectiveBase} (hasta ${limitAgencias} ag. incluidas) + ${costPart} = <b>$${Math.round(subtotal)} USD/mes</b>`;
+        } else {
+          breakdownHtml = `Base $${effectiveBase} (${agencias} de ${limitAgencias} agencias incluidas en el plan) = <b>$${Math.round(subtotal)} USD/mes</b> <span style="color: #4ade80; font-weight: 600;">(Sin costo adicional)</span>`;
+        }
+      } else {
+        breakdownHtml = `Base $${effectiveBase} (${agencias} agencias • Sin límite de agencias) = <b>$${Math.round(subtotal)} USD/mes</b>`;
+      }
+
+      if (isAnnual) {
+        breakdownHtml += ` <br><span style="color: #4ade80;">✓ 15% Descuento Anual aplicado: <b>$${Math.round(finalTotal)} USD/mes</b></span>`;
+      }
+      formulaBreakdown.innerHTML = breakdownHtml;
     }
 
     // Métricas de Ahorro y ROI
@@ -164,8 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formatPointText = (val) => {
       const n = Number(val);
-      if (n === 0) return '+ $0.00 USD por punto / agencia';
-      return `+ $${n.toFixed(2)} USD por punto / agencia`;
+      return `+ $${n.toFixed(2)} USD por punto adicional`;
     };
 
     if (pointTagBasico) pointTagBasico.textContent = formatPointText(PLAN_RATES.basico.perPoint);
@@ -216,9 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const pillElite = document.getElementById('calc-pill-price-elite');
 
     const formatPillPrice = (rate) => {
-      const p = Number(rate.perPoint);
-      const lim = rate.pointLimit && Number(rate.pointLimit) > 0 ? ` (hasta ${rate.pointLimit} ag.)` : '';
-      return `$${rate.base} base + $${p}/pto${lim}`;
+      const p = Number(rate.perPoint) || 0;
+      const lim = rate.pointLimit && Number(rate.pointLimit) > 0 ? ` (hasta ${rate.pointLimit} ag.)` : ' (ilimitado)';
+      const adicText = p > 0 ? ` + $${p}/pto adic.` : '';
+      return `$${rate.base} base${lim}${adicText}`;
     };
 
     if (pillBasico) pillBasico.textContent = formatPillPrice(PLAN_RATES.basico);
@@ -240,14 +257,17 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let opt of select.options) {
         const val = opt.value.toLowerCase();
         if (val.includes('basic') || val.includes('básic')) {
-          const lim = PLAN_RATES.basico.pointLimit && PLAN_RATES.basico.pointLimit > 0 ? ` - hasta ${PLAN_RATES.basico.pointLimit} ag.` : ' - ilimitado';
-          opt.textContent = `Plan Básico ($${PLAN_RATES.basico.base} / $${PLAN_RATES.basico.perPoint} por punto${lim})`;
+          const lim = PLAN_RATES.basico.pointLimit && PLAN_RATES.basico.pointLimit > 0 ? `hasta ${PLAN_RATES.basico.pointLimit} ag.` : 'ilimitado';
+          const pto = PLAN_RATES.basico.perPoint > 0 ? ` / +$${PLAN_RATES.basico.perPoint} pto adicional` : '';
+          opt.textContent = `Plan Básico ($${PLAN_RATES.basico.base} - ${lim}${pto})`;
         } else if (val.includes('profesional') || val.includes('pro')) {
-          const lim = PLAN_RATES.profesional.pointLimit && PLAN_RATES.profesional.pointLimit > 0 ? ` - hasta ${PLAN_RATES.profesional.pointLimit} ag.` : ' - ilimitado';
-          opt.textContent = `Plan Profesional ($${PLAN_RATES.profesional.base} / $${PLAN_RATES.profesional.perPoint} por punto${lim}) ⭐`;
+          const lim = PLAN_RATES.profesional.pointLimit && PLAN_RATES.profesional.pointLimit > 0 ? `hasta ${PLAN_RATES.profesional.pointLimit} ag.` : 'ilimitado';
+          const pto = PLAN_RATES.profesional.perPoint > 0 ? ` / +$${PLAN_RATES.profesional.perPoint} pto adicional` : '';
+          opt.textContent = `Plan Profesional ($${PLAN_RATES.profesional.base} - ${lim}${pto}) ⭐`;
         } else if (val.includes('elite')) {
-          const lim = PLAN_RATES.elite.pointLimit && PLAN_RATES.elite.pointLimit > 0 ? ` - hasta ${PLAN_RATES.elite.pointLimit} ag.` : ' - ilimitado';
-          opt.textContent = `Plan Elite Enterprise ($${PLAN_RATES.elite.base} / $${PLAN_RATES.elite.perPoint} por punto${lim}) 🏆`;
+          const lim = PLAN_RATES.elite.pointLimit && PLAN_RATES.elite.pointLimit > 0 ? `hasta ${PLAN_RATES.elite.pointLimit} ag.` : 'ilimitado';
+          const pto = PLAN_RATES.elite.perPoint > 0 ? ` / +$${PLAN_RATES.elite.perPoint} pto adicional` : '';
+          opt.textContent = `Plan Elite Enterprise ($${PLAN_RATES.elite.base} - ${lim}${pto}) 🏆`;
         }
       }
     };
