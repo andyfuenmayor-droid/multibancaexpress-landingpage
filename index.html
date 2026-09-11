@@ -741,17 +741,17 @@
                 <label class="calc-plan-pill">
                   <input type="radio" name="calc-plan-choice" value="basico">
                   <span class="pill-name">📦 Básico</span>
-                  <span class="pill-price">$150 base + $5/pto</span>
+                  <span class="pill-price" id="calc-pill-price-basico">$150 base + $5/pto</span>
                 </label>
                 <label class="calc-plan-pill active">
                   <input type="radio" name="calc-plan-choice" value="profesional" checked>
                   <span class="pill-name">⭐ Profesional</span>
-                  <span class="pill-price">$250 base + $8/pto</span>
+                  <span class="pill-price" id="calc-pill-price-pro">$250 base + $8/pto</span>
                 </label>
                 <label class="calc-plan-pill">
                   <input type="radio" name="calc-plan-choice" value="elite">
                   <span class="pill-name">🏆 Elite</span>
-                  <span class="pill-price">$500 base + $12/pto</span>
+                  <span class="pill-price" id="calc-pill-price-elite">$500 base + $12/pto</span>
                 </label>
               </div>
               <div id="calc-plan-desc" style="font-size: 0.85rem; color: #38bdf8; margin-top: -12px; margin-bottom: 20px;">
@@ -832,20 +832,21 @@
       <div class="pricing-grid">
         
         <!-- Plan Básico -->
+        <!-- Plan Básico -->
         <div class="glass-card pricing-card">
           <div>
             <div class="plan-header">
-              <h3 class="plan-name">Básico (SaaS)</h3>
-              <p class="plan-desc">Gestión operativa completa de agencias hasta Caja Maestra.</p>
+              <h3 class="plan-name" id="plan-name-basico">Básico (SaaS)</h3>
+              <p class="plan-desc" id="plan-desc-basico">Gestión operativa completa de agencias hasta Caja Maestra.</p>
             </div>
             <div class="plan-price-wrapper">
               <div class="plan-price" id="price-basico">$150<span>/mes</span></div>
-              <div class="point-cost-tag">+ $5.00 USD por punto / agencia</div>
+              <div class="point-cost-tag" id="point-cost-basico">+ $5.00 USD por punto / agencia</div>
             </div>
-            <div style="font-size: 0.85rem; color: #38bdf8; font-weight: 700; margin-bottom: 16px;">
+            <div id="modules-count-basico" style="font-size: 0.85rem; color: #38bdf8; font-weight: 700; margin-bottom: 16px;">
               16 / 23 módulos activos
             </div>
-            <ul class="plan-features-list">
+            <ul class="plan-features-list" id="features-list-basico">
               <li><span class="check-icon">✓</span> Inicio y Tableros KPI en Vivo</li>
               <li><span class="check-icon">✓</span> Pizarra de Confirmaciones Bancarias</li>
               <li><span class="check-icon">✓</span> Cargar Ventas por Sistema</li>
@@ -867,17 +868,17 @@
           <span class="popular-ribbon">⭐ MÁS ELEGIDO POR OPERADORAS</span>
           <div>
             <div class="plan-header">
-              <h3 class="plan-name" style="color: #4ade80;">Profesional</h3>
-              <p class="plan-desc">Gestión integral de Agencias, Operadoras y Proveedores.</p>
+              <h3 class="plan-name" id="plan-name-pro" style="color: #4ade80;">Profesional</h3>
+              <p class="plan-desc" id="plan-desc-pro">Gestión integral de Agencias, Operadoras y Proveedores.</p>
             </div>
             <div class="plan-price-wrapper">
               <div class="plan-price" id="price-pro" style="color: #fff;">$250<span>/mes</span></div>
-              <div class="point-cost-tag" style="background: rgba(2, 171, 33, 0.2); color: #86efac;">+ $8.00 USD por punto / agencia</div>
+              <div class="point-cost-tag" id="point-cost-pro" style="background: rgba(2, 171, 33, 0.2); color: #86efac;">+ $8.00 USD por punto / agencia</div>
             </div>
-            <div style="font-size: 0.85rem; color: #4ade80; font-weight: 700; margin-bottom: 16px;">
+            <div id="modules-count-pro" style="font-size: 0.85rem; color: #4ade80; font-weight: 700; margin-bottom: 16px;">
               21 / 23 módulos activos
             </div>
-            <ul class="plan-features-list">
+            <ul class="plan-features-list" id="features-list-pro">
               <li><span class="check-icon">✓</span> <strong>Todo lo incluido en el Plan Básico</strong></li>
               <li><span class="check-icon">✓</span> Pagos a Operador de Lotería</li>
               <li><span class="check-icon">✓</span> Venta por Operadora y Proveedor</li>
@@ -898,17 +899,17 @@
         <div class="glass-card pricing-card">
           <div>
             <div class="plan-header">
-              <h3 class="plan-name">Elite Enterprise</h3>
-              <p class="plan-desc">Control total sin límites: Incluye Auditoría Híbrida y Gastos Administrativos.</p>
+              <h3 class="plan-name" id="plan-name-elite">Elite Enterprise</h3>
+              <p class="plan-desc" id="plan-desc-elite">Control total sin límites: Incluye Auditoría Híbrida y Gastos Administrativos.</p>
             </div>
             <div class="plan-price-wrapper">
               <div class="plan-price" id="price-elite">$500<span>/mes</span></div>
-              <div class="point-cost-tag">+ $12.00 USD por punto / agencia</div>
+              <div class="point-cost-tag" id="point-cost-elite">+ $12.00 USD por punto / agencia</div>
             </div>
-            <div style="font-size: 0.85rem; color: #a78bfa; font-weight: 700; margin-bottom: 16px;">
+            <div id="modules-count-elite" style="font-size: 0.85rem; color: #a78bfa; font-weight: 700; margin-bottom: 16px;">
               23 / 23 módulos activos (100% del Sistema)
             </div>
-            <ul class="plan-features-list">
+            <ul class="plan-features-list" id="features-list-elite">
               <li><span class="check-icon">✓</span> <strong>Todo lo incluido en el Plan Profesional</strong></li>
               <li><span class="check-icon">✓</span> <b>Auditoría Híbrida Oficial vs Taquilla</b></li>
               <li><span class="check-icon">✓</span> Detección de Discrepancias por Terminal</li>
@@ -937,71 +938,71 @@
             <thead>
               <tr>
                 <th style="text-align: left; padding-left: 28px;">Módulos del Sistema (23 Módulos)</th>
-                <th>Básico ($150)</th>
-                <th class="highlight-col">Profesional ($250)</th>
-                <th>Elite ($500)</th>
+                <th id="matrix-header-basico">Básico ($150)</th>
+                <th id="matrix-header-pro" class="highlight-col">Profesional ($250)</th>
+                <th id="matrix-header-elite">Elite ($500)</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-mod="Inicio">
                 <td class="mod-name">Inicio, Tablero Ejecutivo y Métricas en Vivo</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Pizarra Confirmaciones">
                 <td class="mod-name">Pizarra de Confirmaciones en Tiempo Real (OCR)</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Caja Maestra">
                 <td class="mod-name">Caja Maestra Multi-Moneda (BS, USD, COP)</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Agencias">
                 <td class="mod-name">Gestión de Agencias y Comisiones</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Cargar Ventas">
                 <td class="mod-name">Cargar Ventas y Saldo de Agencias</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Sistemas">
                 <td class="mod-name">Terminal Taquilla POS e Impresión Térmica</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Cobradores">
                 <td class="mod-name">Portal de Cobradores en Ruta con QR</td>
-                <td><span class="matrix-check">✓</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Venta Operadora">
                 <td class="mod-name">Módulo Operadoras y Liquidación Proveedores</td>
-                <td><span class="matrix-cross">✕</span></td>
-                <td class="highlight-col"><span class="matrix-check">✓</span></td>
-                <td><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-basico"><span class="matrix-cross">✕</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-check">✓</span></td>
+                <td class="cell-mod-elite"><span class="matrix-check">✓</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Auditoría">
                 <td class="mod-name">Auditoría Híbrida (Carga Oficial vs Taquilla)</td>
-                <td><span class="matrix-cross">✕</span></td>
-                <td class="highlight-col"><span class="matrix-cross">✕</span></td>
-                <td><span class="matrix-badge-exclusive">✓ EXCLUSIVO</span></td>
+                <td class="cell-mod-basico"><span class="matrix-cross">✕</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-cross">✕</span></td>
+                <td class="cell-mod-elite"><span class="matrix-badge-exclusive">✓ EXCLUSIVO</span></td>
               </tr>
-              <tr>
+              <tr data-mod="Gastos Administrativos">
                 <td class="mod-name">Gastos Administrativos y Cierre General</td>
-                <td><span class="matrix-cross">✕</span></td>
-                <td class="highlight-col"><span class="matrix-cross">✕</span></td>
-                <td><span class="matrix-badge-exclusive">✓ EXCLUSIVO</span></td>
+                <td class="cell-mod-basico"><span class="matrix-cross">✕</span></td>
+                <td class="cell-mod-pro highlight-col"><span class="matrix-cross">✕</span></td>
+                <td class="cell-mod-elite"><span class="matrix-badge-exclusive">✓ EXCLUSIVO</span></td>
               </tr>
             </tbody>
           </table>
@@ -1371,8 +1372,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/app.js?v=3.5"></script>
-  <script src="js/calculator.js?v=3.5"></script>
-  <script src="js/leads.js?v=3.5"></script>
+  <script src="js/app.js?v=3.6"></script>
+  <script src="js/calculator.js?v=3.6"></script>
+  <script src="js/leads.js?v=3.6"></script>
 </body>
 </html>
