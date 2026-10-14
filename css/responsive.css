@@ -493,3 +493,67 @@
   h1 { font-size: 1.7rem; }
   h2 { font-size: 1.4rem; }
 }
+
+/* --- Responsive Rules for Real Screens Showcase & Lightbox --- */
+@media screen and (max-width: 1024px) {
+  .screens-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-screen-tabs {
+    gap: 4px;
+    padding: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero-screen-tab-btn {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+
+  .screen-caption-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  .screens-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .screen-lightbox {
+    padding: 8px;
+  }
+
+  .screen-lightbox-content {
+    max-height: 95vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .screen-lightbox-header {
+    padding: 10px 14px;
+  }
+
+  .screen-lightbox-body {
+    padding: 8px;
+  }
+
+  .screen-lightbox-body img {
+    max-height: 62vh;
+  }
+
+  .screen-lightbox-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+  }
+}
+

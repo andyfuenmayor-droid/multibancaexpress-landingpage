@@ -25,9 +25,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/variables.css?v=3.6">
-  <link rel="stylesheet" href="css/styles.css?v=3.6">
-  <link rel="stylesheet" href="css/responsive.css?v=3.6">
+  <link rel="stylesheet" href="css/variables.css?v=4.0">
+  <link rel="stylesheet" href="css/styles.css?v=4.0">
+  <link rel="stylesheet" href="css/responsive.css?v=4.0">
 </head>
 <body>
 
@@ -50,6 +50,7 @@
       <nav>
         <ul class="nav-links" id="nav-links">
           <li><a href="#ecosistema" class="nav-link">Ecosistema</a></li>
+          <li><a href="#pantallas" class="nav-link">Pantallas</a></li>
           <li><a href="#modulos" class="nav-link">Módulos</a></li>
           <li><a href="#taquilla" class="nav-link">Terminal POS</a></li>
           <li><a href="#calculadora" class="nav-link">Calculadora</a></li>
@@ -146,89 +147,178 @@
         </div>
       </div>
 
-      <!-- Hero Right: Live Interactive Dashboard Mockup (Vista UI Principal) -->
+      <!-- Hero Right: Interactive Live Real Screens Showcase -->
       <div class="hero-mockup-wrapper">
         <div class="hero-mockup-glow"></div>
-        <div class="hero-mockup">
+        
+        <!-- Screen Selector Tabs -->
+        <div class="hero-screen-tabs">
+          <button class="hero-screen-tab-btn active" data-screen="crm">
+            <span>⚡ Pizarra CRM</span>
+          </button>
+          <button class="hero-screen-tab-btn" data-screen="taquilla">
+            <span>🎟️ Taquilla POS</span>
+          </button>
+          <button class="hero-screen-tab-btn" data-screen="cobrador">
+            <span>🛵 Cobrador QR</span>
+          </button>
+          <button class="hero-screen-tab-btn" data-screen="saldos">
+            <span>📊 Saldos Agencias</span>
+          </button>
+          <button class="hero-screen-tab-btn" data-screen="auditoria">
+            <span>🛡️ Cierre Semanal</span>
+          </button>
+        </div>
+
+        <div class="screen-frame-container">
           
-          <div class="mockup-header">
-            <div class="mockup-window-controls">
-              <span class="mockup-dot red"></span>
-              <span class="mockup-dot yellow"></span>
-              <span class="mockup-dot green"></span>
-            </div>
-            <span class="mockup-badge">SISTEMA EN VIVO • CAJA MAESTRA CONSOLIDADA</span>
-          </div>
-
-          <div class="mockup-metrics-grid">
-            <div class="mockup-metric-card">
-              <span class="label">Ventas Consolidadas (Semana)</span>
-              <span class="value">$54,820.50</span>
-              <span class="delta">▲ +14.8% vs semana ant.</span>
-            </div>
-            <div class="mockup-metric-card">
-              <span class="label">Pagos Pendientes por Confirmar</span>
-              <span class="value" style="color: #38bdf8;">0 Pendientes</span>
-              <span class="delta" style="color: #4ade80;">✓ 100% Conciliado</span>
-            </div>
-            <div class="mockup-metric-card">
-              <span class="label">Agencias Activas en Red</span>
-              <span class="value">28 Puntos</span>
-              <span class="delta">🟢 28/28 Transmitiendo</span>
-            </div>
-            <div class="mockup-metric-card">
-              <span class="label">Cobradores en Ruta</span>
-              <span class="value">6 Activos</span>
-              <span class="delta" style="color: #38bdf8;">⚡ Liquidación QR Lista</span>
-            </div>
-          </div>
-
-          <div class="mockup-feed-title">
-            <span>⚡ Feed Transaccional en Tiempo Real</span>
-            <span style="color: #22c55e;">● En línea</span>
-          </div>
-
-          <div class="mockup-feed-list" id="mockup-live-feed">
-            <div class="feed-item">
-              <div class="feed-item-left">
-                <div class="feed-icon pago-movil">📱</div>
-                <div>
-                  <span class="feed-title">Pago Móvil Validado con OCR</span>
-                  <span class="feed-sub">Ref: #892014 • Banesco • Agencia Centro 02</span>
-                </div>
+          <!-- Screen 1: CRM Pizarra Confirmaciones -->
+          <div class="screen-view-item active" id="screen-view-crm">
+            <div class="screen-frame-topbar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
               </div>
-              <div class="feed-badge-success">+Bs 6,450.00</div>
-            </div>
-
-            <div class="feed-item">
-              <div class="feed-item-left">
-                <div class="feed-icon zelle">💎</div>
-                <div>
-                  <span class="feed-title">Zelle Confirmado</span>
-                  <span class="feed-sub">Ref: ZL-9921 • Caja Maestra USD</span>
-                </div>
+              <div class="screen-url-badge">
+                <span class="badge-dot"></span>
+                <span>crm.multibancaexpress.com/#/confirmations</span>
               </div>
-              <div class="feed-badge-success">+$420.00</div>
             </div>
-
-            <div class="feed-item">
-              <div class="feed-item-left">
-                <div class="feed-icon qr-cobrador">⚡</div>
-                <div>
-                  <span class="feed-title">Liquidación QR Cobrador</span>
-                  <span class="feed-sub">Cobrador: Manuel G. • Ruta Este</span>
-                </div>
+            <div class="screen-img-wrapper" onclick="openScreenLightbox('assets/screens/crm_pizarra_confirmaciones.jpg', 'Pizarra de Confirmaciones en Tiempo Real (CRM)', 'Validación de pagos móviles y transferencias bancarias con OCR anti-duplicados y conciliación inmediata.')">
+              <img src="assets/screens/crm_pizarra_confirmaciones.jpg" alt="Pizarra de Confirmaciones CRM Multibanca Express" loading="eager">
+              <span class="screen-expand-btn">🔍 Ampliar Pantalla</span>
+            </div>
+            <div class="screen-caption-bar">
+              <div>
+                <div class="screen-caption-title">Pizarra de Confirmaciones Bancarias</div>
+                <div class="screen-caption-subtitle">Conciliación automática con OCR y validación de referencias bancarias.</div>
               </div>
-              <div class="feed-badge-success">Liquidado OK</div>
+              <div class="screen-caption-tags">
+                <span class="screen-tag-chip">OCR Anti-Fraude</span>
+                <span class="screen-tag-chip cyan">Cero Duplicados</span>
+                <span class="screen-tag-chip purple">100% Producción</span>
+              </div>
             </div>
           </div>
 
-          <!-- Floating Pill -->
-          <div class="floating-pill">
-            <div class="floating-pill-icon">🛡️</div>
-            <div>
-              <div style="font-weight: 800; font-size: 0.85rem; color: #fff;">Auditoría Inviolable</div>
-              <div style="font-size: 0.72rem; color: #94a3b8;">Detección automática de duplicados</div>
+          <!-- Screen 2: Taquilla POS Terminal -->
+          <div class="screen-view-item" id="screen-view-taquilla">
+            <div class="screen-frame-topbar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <div class="screen-url-badge">
+                <span class="badge-dot"></span>
+                <span>taq.multibancaexpress.com/#/pos</span>
+              </div>
+            </div>
+            <div class="screen-img-wrapper" onclick="openScreenLightbox('assets/screens/taquilla_pos_terminal.jpg', 'Terminal de Taquilla y Cajero (POS)', 'Ventas rápidas de lotería, tickets térmicos 58mm/80mm y validación QR de premios.')">
+              <img src="assets/screens/taquilla_pos_terminal.jpg" alt="Terminal de Taquilla POS Multibanca Express" loading="lazy">
+              <span class="screen-expand-btn">🔍 Ampliar Pantalla</span>
+            </div>
+            <div class="screen-caption-bar">
+              <div>
+                <div class="screen-caption-title">Terminal de Taquilla y Cajero (POS)</div>
+                <div class="screen-caption-subtitle">Emisión ultra-rápida de jugadas, tickets térmicos e impresión ESC/POS.</div>
+              </div>
+              <div class="screen-caption-tags">
+                <span class="screen-tag-chip">ESC/POS 58/80mm</span>
+                <span class="screen-tag-chip cyan">Validación QR</span>
+                <span class="screen-tag-chip purple">Alerta en Vivo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 3: Cobrador Móvil QR -->
+          <div class="screen-view-item" id="screen-view-cobrador">
+            <div class="screen-frame-topbar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <div class="screen-url-badge">
+                <span class="badge-dot"></span>
+                <span>taq.multibancaexpress.com/#/collector</span>
+              </div>
+            </div>
+            <div class="screen-img-wrapper" onclick="openScreenLightbox('assets/screens/cobrador_ruta_qr.jpg', 'Portal Cobradores en Ruta y Pase QR', 'Control móvil de rutas de recaudación, recibos digitales y pase de liquidación QR.')">
+              <img src="assets/screens/cobrador_ruta_qr.jpg" alt="Portal Cobrador en Ruta QR Multibanca Express" loading="lazy">
+              <span class="screen-expand-btn">🔍 Ampliar Pantalla</span>
+            </div>
+            <div class="screen-caption-bar">
+              <div>
+                <div class="screen-caption-title">Portal de Cobradores en Ruta</div>
+                <div class="screen-caption-subtitle">Ruta de agencias en tiempo real, token QR dinámico de 10 minutos y liquidación en caja.</div>
+              </div>
+              <div class="screen-caption-tags">
+                <span class="screen-tag-chip">Token QR 10 Min</span>
+                <span class="screen-tag-chip cyan">Recaudación Móvil</span>
+                <span class="screen-tag-chip purple">WhatsApp 1-Click</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 4: Saldos Multidivisa Agencias -->
+          <div class="screen-view-item" id="screen-view-saldos">
+            <div class="screen-frame-topbar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <div class="screen-url-badge">
+                <span class="badge-dot"></span>
+                <span>crm.multibancaexpress.com/#/agency-balances</span>
+              </div>
+            </div>
+            <div class="screen-img-wrapper" onclick="openScreenLightbox('assets/screens/saldo_agencias_crm.jpg', 'Control Financiero de Agencias (CRM)', 'Desglose multidivisa exacto en Bolívares (BS), Dólares (USD) y Pesos (COP).')">
+              <img src="assets/screens/saldo_agencias_crm.jpg" alt="Saldos de Agencias CRM Multibanca Express" loading="lazy">
+              <span class="screen-expand-btn">🔍 Ampliar Pantalla</span>
+            </div>
+            <div class="screen-caption-bar">
+              <div>
+                <div class="screen-caption-title">Saldos y Balances de Agencias (CRM)</div>
+                <div class="screen-caption-subtitle">Control estricto separado en BS, USD y COP con descarga de estados de cuenta.</div>
+              </div>
+              <div class="screen-caption-tags">
+                <span class="screen-tag-chip">BS • USD • COP</span>
+                <span class="screen-tag-chip cyan">Disparo WhatsApp</span>
+                <span class="screen-tag-chip purple">Auditoría Diaria</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 5: Auditoría Cierre Semanal -->
+          <div class="screen-view-item" id="screen-view-auditoria">
+            <div class="screen-frame-topbar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <div class="screen-url-badge">
+                <span class="badge-dot"></span>
+                <span>crm.multibancaexpress.com/#/weekly-audit</span>
+              </div>
+            </div>
+            <div class="screen-img-wrapper" onclick="openScreenLightbox('assets/screens/auditoria_cierre_semanal.jpg', 'Auditoría y Cierre Semanal (CRM)', 'Conciliación general de ciclos contables, ventas oficiales vs taquillas y reporte de utilidad.')">
+              <img src="assets/screens/auditoria_cierre_semanal.jpg" alt="Auditoría y Cierre Semanal CRM Multibanca Express" loading="lazy">
+              <span class="screen-expand-btn">🔍 Ampliar Pantalla</span>
+            </div>
+            <div class="screen-caption-bar">
+              <div>
+                <div class="screen-caption-title">Auditoría y Cierre Semanal</div>
+                <div class="screen-caption-subtitle">Conciliación híbrida entre cifras del operador oficial y ventas reales de taquilla sin descuadres.</div>
+              </div>
+              <div class="screen-caption-tags">
+                <span class="screen-tag-chip">Oficial vs Taquilla</span>
+                <span class="screen-tag-chip cyan">Cero Descuadre</span>
+                <span class="screen-tag-chip purple">Exportación Excel</span>
+              </div>
             </div>
           </div>
 
@@ -399,6 +489,147 @@
   </section>
 
   <!-- =========================================================================
+       4.1 GALERÍA DE PANTALLAS OFICIALES EN PRODUCCIÓN (CRM & TAQUILLA)
+       ========================================================================= -->
+  <section class="section" id="pantallas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Pantallas Oficiales en Producción</span>
+        <h2>Software Real, <span class="gradient-text">Sin Simulaciones Ni Trucos</span></h2>
+        <p class="section-subtitle">Visualiza la interfaz de usuario en vivo que usan operadoras, cajeros y recaudadores diariamente en <code>crm.multibancaexpress.com</code> y <code>taq.multibancaexpress.com</code>. Haz clic sobre cualquier pantalla para verla en alta resolución.</p>
+      </div>
+
+      <div class="screens-gallery-grid">
+        <!-- Card 1: Pizarra CRM -->
+        <div class="gallery-screen-card">
+          <div class="gallery-screen-header">
+            <div class="mockup-window-controls">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+            </div>
+            <span class="screen-tag-chip">crm.multibancaexpress.com</span>
+          </div>
+          <div class="gallery-screen-body" onclick="openScreenLightbox('assets/screens/crm_pizarra_confirmaciones.jpg', 'Pizarra de Confirmaciones en Tiempo Real (CRM)', 'Validación de pagos móviles y transferencias con OCR anti-duplicados y conciliación inmediata.')">
+            <img src="assets/screens/crm_pizarra_confirmaciones.jpg" alt="Pizarra de Confirmaciones CRM Multibanca Express" loading="lazy">
+            <span class="screen-expand-btn">🔍 Ver Alta Resolución</span>
+          </div>
+          <div class="gallery-screen-info">
+            <h4 style="color: #fff; font-size: 1rem; margin: 0;">Pizarra de Confirmaciones Bancarias</h4>
+            <p class="gallery-screen-desc">Recepción de pagos vía webhook API y carga manual. Algoritmo anti-fraude que alerta referencias duplicadas en milisegundos.</p>
+            <div class="screen-caption-tags">
+              <span class="screen-tag-chip">OCR Anti-Fraude</span>
+              <span class="screen-tag-chip cyan">Webhook API</span>
+              <span class="screen-tag-chip purple">Conciliación Instantánea</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Taquilla POS -->
+        <div class="gallery-screen-card">
+          <div class="gallery-screen-header">
+            <div class="mockup-window-controls">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+            </div>
+            <span class="screen-tag-chip cyan">taq.multibancaexpress.com</span>
+          </div>
+          <div class="gallery-screen-body" onclick="openScreenLightbox('assets/screens/taquilla_pos_terminal.jpg', 'Terminal de Taquilla y Cajero (POS)', 'Venta rápida de jugadas, tickets térmicos ESC/POS 58mm/80mm y validación QR de premios.')">
+            <img src="assets/screens/taquilla_pos_terminal.jpg" alt="Terminal de Taquilla POS Multibanca Express" loading="lazy">
+            <span class="screen-expand-btn">🔍 Ver Alta Resolución</span>
+          </div>
+          <div class="gallery-screen-info">
+            <h4 style="color: #fff; font-size: 1rem; margin: 0;">Terminal de Taquilla y Cajero POS</h4>
+            <p class="gallery-screen-desc">Diseñado para cajeros de alta velocidad. Impresión de tickets térmicos (58mm/80mm), arqueo físico por moneda y alertas WebSockets en vivo.</p>
+            <div class="screen-caption-tags">
+              <span class="screen-tag-chip">Impresión ESC/POS</span>
+              <span class="screen-tag-chip cyan">Lectura QR Premios</span>
+              <span class="screen-tag-chip purple">Alertas WebSockets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Cobrador QR -->
+        <div class="gallery-screen-card">
+          <div class="gallery-screen-header">
+            <div class="mockup-window-controls">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+            </div>
+            <span class="screen-tag-chip">taq.multibancaexpress.com</span>
+          </div>
+          <div class="gallery-screen-body" onclick="openScreenLightbox('assets/screens/cobrador_ruta_qr.jpg', 'Portal Cobradores en Ruta y Pase QR', 'Liquidación en campo con token QR dinámico de 10 minutos para entrega blindada de efectivo en caja.')">
+            <img src="assets/screens/cobrador_ruta_qr.jpg" alt="Portal Cobradores en Ruta QR Multibanca Express" loading="lazy">
+            <span class="screen-expand-btn">🔍 Ver Alta Resolución</span>
+          </div>
+          <div class="gallery-screen-info">
+            <h4 style="color: #fff; font-size: 1rem; margin: 0;">Portal Cobradores en Ruta con Pase QR</h4>
+            <p class="gallery-screen-desc">La app móvil que usan tus cobradores para liquidar agencias, enviar comprobantes por WhatsApp y transferir el efectivo con QR temporal.</p>
+            <div class="screen-caption-tags">
+              <span class="screen-tag-chip">Token QR 10 Min</span>
+              <span class="screen-tag-chip cyan">WhatsApp 1-Click</span>
+              <span class="screen-tag-chip purple">Cuadre con Caja</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Saldos Multidivisa Agencias -->
+        <div class="gallery-screen-card">
+          <div class="gallery-screen-header">
+            <div class="mockup-window-controls">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+            </div>
+            <span class="screen-tag-chip">crm.multibancaexpress.com</span>
+          </div>
+          <div class="gallery-screen-body" onclick="openScreenLightbox('assets/screens/saldo_agencias_crm.jpg', 'Control Financiero de Agencias (CRM)', 'Desglose multidivisa estricto en Bolívares (BS), Dólares (USD) y Pesos (COP).')">
+            <img src="assets/screens/saldo_agencias_crm.jpg" alt="Saldos Multidivisa Agencias CRM Multibanca Express" loading="lazy">
+            <span class="screen-expand-btn">🔍 Ver Alta Resolución</span>
+          </div>
+          <div class="gallery-screen-info">
+            <h4 style="color: #fff; font-size: 1rem; margin: 0;">Saldos Multidivisa de Agencias</h4>
+            <p class="gallery-screen-desc">Monitorea en tiempo real lo que debe o tiene a favor cada agencia con total separación de monedas: Bolívares, Dólares y Pesos.</p>
+            <div class="screen-caption-tags">
+              <span class="screen-tag-chip">BS • USD • COP</span>
+              <span class="screen-tag-chip cyan">Liquidación Neta</span>
+              <span class="screen-tag-chip purple">Corte Semanal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Auditoría Cierre Semanal -->
+        <div class="gallery-screen-card">
+          <div class="gallery-screen-header">
+            <div class="mockup-window-controls">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+            </div>
+            <span class="screen-tag-chip">crm.multibancaexpress.com</span>
+          </div>
+          <div class="gallery-screen-body" onclick="openScreenLightbox('assets/screens/auditoria_cierre_semanal.jpg', 'Auditoría y Cierre Semanal (CRM)', 'Conciliación general de ciclos contables, ventas oficiales vs taquillas y reporte de utilidad.')">
+            <img src="assets/screens/auditoria_cierre_semanal.jpg" alt="Auditoría y Cierre Semanal CRM Multibanca Express" loading="lazy">
+            <span class="screen-expand-btn">🔍 Ver Alta Resolución</span>
+          </div>
+          <div class="gallery-screen-info">
+            <h4 style="color: #fff; font-size: 1rem; margin: 0;">Auditoría y Cierre Semanal</h4>
+            <p class="gallery-screen-desc">Módulo central para los cierres de ciclo contable. Cruza data de ventas oficiales con las taquillas físicas sin margen de error.</p>
+            <div class="screen-caption-tags">
+              <span class="screen-tag-chip">Oficial vs Taquilla</span>
+              <span class="screen-tag-chip cyan">Cero Descuadre</span>
+              <span class="screen-tag-chip purple">Auditoría Forense</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
        5. SUITE DE 23 MÓDULOS CON VISTAS UI SIMULADAS EN CADA PESTAÑA
        ========================================================================= -->
   <section class="section" id="modulos">
@@ -444,28 +675,20 @@
             </ul>
             <button class="btn btn-primary btn-sm" onclick="openDemoModal('Pizarra de Confirmaciones')">Probar Pizarra en Demo</button>
           </div>
-          <!-- VISTA UI SIMULADA: Pizarra -->
-          <div class="feature-card-preview">
-            <div class="preview-chip-row">
-              <span class="preview-chip active-chip">🟢 BANESCO</span>
-              <span class="preview-chip active-chip">🟢 MERCANTIL</span>
-              <span class="preview-chip active-chip">🟢 BDV</span>
-              <span class="preview-chip active-chip">💎 ZELLE</span>
+          <!-- VISTA UI REAL: Pizarra de Confirmaciones -->
+          <div class="real-screen-preview-card">
+            <div class="card-top-bar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <span class="screen-tag-chip">crm.multibancaexpress.com</span>
             </div>
-            <div style="background: rgba(0,0,0,0.45); border-radius: 10px; padding: 18px; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 12px; align-items: center;">
-                <span style="font-weight: 700; color: #fff; font-size: 0.95rem;">Pago Móvil Recibido</span>
-                <span style="color: #22c55e; font-weight: 800; font-size: 1.15rem;">Bs 8,920.00</span>
-              </div>
-              <div style="font-size: 0.82rem; color: #94a3b8; line-height: 1.6;">
-                Agencia: <strong>Av. Bolívar #04 (Centro)</strong><br>
-                Teléfono: 0414-***9210 • C.I: V-19.482.019<br>
-                Referencia: <strong>#9021882</strong> (OCR Verificado Único ✓)
-              </div>
-              <div style="display: flex; gap: 10px; margin-top: 16px;">
-                <button class="btn btn-primary btn-sm" style="flex: 1; padding: 8px;">✓ Confirmar Pago</button>
-                <button class="btn btn-secondary btn-sm" style="flex: 1; padding: 8px; color: #f87171;">✕ Rechazar</button>
-              </div>
+            <img src="assets/screens/crm_pizarra_confirmaciones.jpg" alt="Pizarra de Confirmaciones CRM Multibanca Express" onclick="openScreenLightbox('assets/screens/crm_pizarra_confirmaciones.jpg', 'Pizarra de Confirmaciones en Tiempo Real (CRM)', 'Validación bancaria con detección de duplicados por OCR y conciliación inmediata.')" title="Clic para ampliar pantalla en alta resolución">
+            <div class="card-footer-info">
+              <span>⚡ Webhook API + OCR Anti-Fraude</span>
+              <span style="color: #22c55e; font-weight: 700;">● Sistema en Producción</span>
             </div>
           </div>
         </div>
@@ -476,7 +699,7 @@
         <div class="feature-detail-grid">
           <div>
             <h3>Caja Maestra Multi-Moneda Unificada</h3>
-            <p style="margin-top: 12px;">Maneja simultáneamente transacciones en Bolívares (Bs), Dólares (USD), Pesos Colombianos (COP) y Cripto sin diferencias en la tasa cambiaria.</p>
+            <p style="margin-top: 12px;">Maneja simultáneamente transacciones en Bolívares (Bs), Dólares (USD) y Pesos Colombianos (COP) sin diferencias en la tasa ni mezclas contables.</p>
             <ul class="feature-bullets">
               <li><span class="bullet-dot"></span> Cierre diario con conteo físico de billetes por cada denominación.</li>
               <li><span class="bullet-dot"></span> Flujo de caja en vivo con ingresos por agencias, cobradores y egresos de gastos.</li>
@@ -484,25 +707,20 @@
             </ul>
             <button class="btn btn-primary btn-sm" onclick="openDemoModal('Caja Maestra')">Conocer Caja Maestra</button>
           </div>
-          <!-- VISTA UI SIMULADA: Caja Maestra -->
-          <div class="feature-card-preview">
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-                <span style="font-size: 0.88rem; color: #cbd5e1;">💵 Saldo Efectivo USD</span>
-                <span style="font-weight: 800; color: #fff; font-size: 1.15rem;">$12,450.00</span>
+          <!-- VISTA UI REAL: Caja Maestra & Saldos -->
+          <div class="real-screen-preview-card">
+            <div class="card-top-bar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-                <span style="font-size: 0.88rem; color: #cbd5e1;">🇻🇪 Saldo Bancario Bs</span>
-                <span style="font-weight: 800; color: #4ade80; font-size: 1.15rem;">Bs 482,900.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-                <span style="font-size: 0.88rem; color: #cbd5e1;">🇨🇴 Pesos Colombianos COP</span>
-                <span style="font-weight: 800; color: #38bdf8; font-size: 1.15rem;">$48,500,000 COP</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-                <span style="font-size: 0.88rem; color: #cbd5e1;">💎 Cuentas Digitales (Zelle / USDT)</span>
-                <span style="font-weight: 800; color: #a78bfa; font-size: 1.15rem;">$8,320.00</span>
-              </div>
+              <span class="screen-tag-chip">crm.multibancaexpress.com</span>
+            </div>
+            <img src="assets/screens/saldo_agencias_crm.jpg" alt="Caja Maestra y Saldos CRM Multibanca Express" onclick="openScreenLightbox('assets/screens/saldo_agencias_crm.jpg', 'Control Financiero y Saldos de Agencias (CRM)', 'Separación estricta de saldos en Bolívares (BS), Dólares (USD) y Pesos (COP).')" title="Clic para ampliar pantalla en alta resolución">
+            <div class="card-footer-info">
+              <span>💰 Arqueo Separado en BS, USD y COP</span>
+              <span style="color: #38bdf8; font-weight: 700;">● Cero Mezcla de Monedas</span>
             </div>
           </div>
         </div>
@@ -521,26 +739,20 @@
             </ul>
             <button class="btn btn-primary btn-sm" onclick="openDemoModal('Liquidación de Agencias')">Ver Liquidación en Demo</button>
           </div>
-          <!-- VISTA UI SIMULADA: Liquidación -->
-          <div class="feature-card-preview">
-            <div style="background: rgba(0,0,0,0.45); border-radius: 10px; padding: 18px; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="font-weight: 800; color: #fff; margin-bottom: 12px; font-size: 0.95rem;">Resumen de Cierre de Agencia #12</div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
-                <span style="color: #94a3b8;">Venta Total:</span>
-                <span style="color: #fff; font-weight: 700;">$4,500.00</span>
+          <!-- VISTA UI REAL: Liquidación de Agencias -->
+          <div class="real-screen-preview-card">
+            <div class="card-top-bar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
               </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
-                <span style="color: #94a3b8;">Comisión Agencia (15%):</span>
-                <span style="color: #f87171; font-weight: 700;">-$675.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);">
-                <span style="color: #94a3b8;">Premios Pagados:</span>
-                <span style="color: #f87171; font-weight: 700;">-$2,100.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 1.05rem; padding-top: 12px; font-weight: 900;">
-                <span style="color: #fff;">Saldo a Cobrar Agencia:</span>
-                <span style="color: #4ade80;">+$1,725.00</span>
-              </div>
+              <span class="screen-tag-chip">crm.multibancaexpress.com</span>
+            </div>
+            <img src="assets/screens/saldo_agencias_crm.jpg" alt="Liquidación de Agencias CRM Multibanca Express" onclick="openScreenLightbox('assets/screens/saldo_agencias_crm.jpg', 'Liquidación de Agencias (CRM)', 'Cálculo automático de ventas, comisiones, premios y saldo neto a cobrar por agencia.')" title="Clic para ampliar pantalla en alta resolución">
+            <div class="card-footer-info">
+              <span>🏪 Venta Bruta - Premios - Comisiones = Saldo Neto</span>
+              <span style="color: #4ade80; font-weight: 700;">● Cuadre Exacto</span>
             </div>
           </div>
         </div>
@@ -551,24 +763,28 @@
         <div class="feature-detail-grid">
           <div>
             <h3>Cobradores en Ruta con Liquidación QR</h3>
-            <p style="margin-top: 12px;">Equipa a tus recaudadores con una interfaz web móvil ultra-rápida. Registran cobranzas en la calle y liquidan la entrega de efectivo mediante un token QR seguro.</p>
+            <p style="margin-top: 12px;">Equipa a tus recaudadores con una interfaz web móvil ultra-rápida. Registran cobranzas en la calle y liquidan la entrega de efectivo mediante un token QR seguro de 10 minutos.</p>
             <ul class="feature-bullets">
               <li><span class="bullet-dot"></span> Cuadre en vivo del dinero total recaudado en ruta por cada cobrador.</li>
               <li><span class="bullet-dot"></span> Liquidación en caja escaneando el código QR generado en el teléfono del cobrador.</li>
-              <li><span class="bullet-dot"></span> Cero disputas: Registro inmutable con fecha, hora exacta y monto liquidado.</li>
+              <li><span class="bullet-dot"></span> Disparo de estados de cuenta y comprobantes por WhatsApp en 1 clic.</li>
             </ul>
             <button class="btn btn-primary btn-sm" onclick="openDemoModal('Cobradores en Ruta')">Ver Módulo de Cobradores</button>
           </div>
-          <!-- VISTA UI SIMULADA: Pase Móvil QR -->
-          <div class="feature-card-preview">
-            <div style="text-align: center; padding: 22px; background: rgba(0,0,0,0.45); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="font-size: 3rem; margin-bottom: 8px;">📲</div>
-              <h4 style="color: #fff; margin-bottom: 4px; font-size: 1.1rem;">Pase de Liquidación QR</h4>
-              <p style="font-size: 0.82rem; color: #94a3b8;">Cobrador: Carlos Rodríguez (Ruta Centro)</p>
-              <div style="margin: 16px 0; background: rgba(2, 171, 33, 0.15); border: 1px solid rgba(2, 171, 33, 0.4); padding: 12px; border-radius: 8px; font-weight: 800; font-size: 1.25rem; color: #4ade80;">
-                Monto a Entregar: $1,450.00
+          <!-- VISTA UI REAL: Pase Móvil QR -->
+          <div class="real-screen-preview-card">
+            <div class="card-top-bar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
               </div>
-              <span class="preview-chip active-chip">⚡ Token QR Válido por 10 min</span>
+              <span class="screen-tag-chip">taq.multibancaexpress.com</span>
+            </div>
+            <img src="assets/screens/cobrador_ruta_qr.jpg" alt="Portal Cobrador en Ruta QR Multibanca Express" onclick="openScreenLightbox('assets/screens/cobrador_ruta_qr.jpg', 'Portal Cobradores en Ruta y Pase QR', 'Liquidación móvil geolocalizada con token QR dinámico de 10 minutos para recepción en caja.')" title="Clic para ampliar pantalla en alta resolución">
+            <div class="card-footer-info">
+              <span>⚡ Token QR 10 Min + Recaudación Móvil</span>
+              <span style="color: #38bdf8; font-weight: 700;">● Inviolable</span>
             </div>
           </div>
         </div>
@@ -583,25 +799,24 @@
             <ul class="feature-bullets">
               <li><span class="bullet-dot"></span> Cruce automático entre data oficial del operador y ventas de taquillas.</li>
               <li><span class="bullet-dot"></span> Detección de boletos premiados duplicados, alterados o cobrados a destiempo.</li>
-              <li><span class="bullet-dot"></span> Trazabilidad forense completa de cada transacción auditada.</li>
+              <li><span class="bullet-dot"></span> Conciliación semanal de ciclos contables con exportación a Excel.</li>
             </ul>
             <button class="btn btn-primary btn-sm" onclick="openDemoModal('Auditoría Híbrida')">Ver Auditoría en Demo</button>
           </div>
-          <!-- VISTA UI SIMULADA: Auditoría Híbrida -->
-          <div class="feature-card-preview">
-            <div style="background: rgba(0,0,0,0.45); border-radius: 10px; padding: 18px; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-                <span style="font-weight: 700; color: #fff;">Conciliación Lotería Oficial</span>
-                <span class="feed-badge-success">100% Cuadrado</span>
+          <!-- VISTA UI REAL: Auditoría Híbrida -->
+          <div class="real-screen-preview-card">
+            <div class="card-top-bar">
+              <div class="mockup-window-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
               </div>
-              <div style="font-size: 0.84rem; color: #94a3b8; line-height: 1.8;">
-                Venta Reportada Operador: <strong style="color: #fff;">$54,820.50</strong><br>
-                Venta Total en Taquillas POS: <strong style="color: #fff;">$54,820.50</strong><br>
-                Diferencia de Cuadre: <strong style="color: #4ade80;">$0.00 USD (Exacto ✓)</strong>
-              </div>
-              <div style="margin-top: 14px; padding: 10px; background: rgba(2,171,33,0.1); border-radius: 6px; border: 1px solid rgba(2,171,33,0.3); font-size: 0.78rem; color: #86efac;">
-                🛡️ Sin boletos duplicados ni diferencias entre el operador y la taquilla física.
-              </div>
+              <span class="screen-tag-chip">crm.multibancaexpress.com</span>
+            </div>
+            <img src="assets/screens/auditoria_cierre_semanal.jpg" alt="Auditoría Híbrida CRM Multibanca Express" onclick="openScreenLightbox('assets/screens/auditoria_cierre_semanal.jpg', 'Auditoría y Cierre Semanal (CRM)', 'Conciliación general de ciclo contable y cuadre de venta oficial contra taquillas.')" title="Clic para ampliar pantalla en alta resolución">
+            <div class="card-footer-info">
+              <span>🛡️ Data Oficial Operador vs Taquillas POS</span>
+              <span style="color: #22c55e; font-weight: 700;">● 0.00 Diferencia</span>
             </div>
           </div>
         </div>
@@ -620,8 +835,26 @@
             </ul>
             <a href="https://taq.multibancaexpress.com" target="_blank" class="btn btn-primary btn-sm">Abrir Terminal Taquilla →</a>
           </div>
-          <!-- VISTA UI SIMULADA: Ticket Térmico Realista -->
-          <div class="thermal-ticket-wrapper">
+          <!-- VISTA UI REAL: Terminal POS & Ticket Térmico -->
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="real-screen-preview-card">
+              <div class="card-top-bar">
+                <div class="mockup-window-controls">
+                  <span class="mockup-dot red"></span>
+                  <span class="mockup-dot yellow"></span>
+                  <span class="mockup-dot green"></span>
+                </div>
+                <span class="screen-tag-chip cyan">taq.multibancaexpress.com</span>
+              </div>
+              <img src="assets/screens/taquilla_pos_terminal.jpg" alt="Terminal Taquilla POS Multibanca Express" onclick="openScreenLightbox('assets/screens/taquilla_pos_terminal.jpg', 'Terminal de Taquilla y Cajero (POS)', 'Venta rápida de jugadas, tickets térmicos ESC/POS 58mm/80mm y validación QR de premios.')" title="Clic para ampliar pantalla en alta resolución">
+              <div class="card-footer-info">
+                <span>🎟️ Impresión Térmica 58/80mm + Validación QR</span>
+                <span style="color: #22c55e; font-weight: 700;">● Cajero en Vivo</span>
+              </div>
+            </div>
+
+            <!-- VISTA UI SIMULADA: Ticket Térmico Realista -->
+            <div class="thermal-ticket-wrapper">
             <div class="thermal-ticket">
               <div class="ticket-header">
                 <div class="ticket-brand">MULTIBANCA EXPRESS</div>
@@ -668,6 +901,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
 
     </div>
@@ -941,15 +1175,15 @@
                 <th style="text-align: left; padding-left: 28px;">Módulos del Sistema (23 Módulos)</th>
                 <th id="matrix-header-basico">Básico ($150)</th>
                 <th id="matrix-header-pro" class="highlight-col">Profesional ($250)</th>
-                <th id="matrix-header-elite">Elite ($500)</th>
+                <th id="matrix-header-elite">Elite ($300)</th>
               </tr>
             </thead>
             <tbody>
               <tr data-mod="LimiteAgencias" style="background: rgba(255, 255, 255, 0.03);">
                 <td class="mod-name" style="font-weight: 700; color: #f8fafc;">🏢 Límite de Agencias / Puntos de Venta</td>
-                <td class="cell-mod-basico" id="matrix-limit-basico" style="font-weight: 700; color: #38bdf8;">Hasta 15 agencias</td>
-                <td class="cell-mod-pro highlight-col" id="matrix-limit-pro" style="font-weight: 700; color: #4ade80;">Hasta 50 agencias</td>
-                <td class="cell-mod-elite" id="matrix-limit-elite" style="font-weight: 700; color: #a78bfa;">♾️ Ilimitadas</td>
+                <td class="cell-mod-basico" id="matrix-limit-basico" style="font-weight: 700; color: #38bdf8;">Hasta 100 agencias</td>
+                <td class="cell-mod-pro highlight-col" id="matrix-limit-pro" style="font-weight: 700; color: #4ade80;">Hasta 200 agencias</td>
+                <td class="cell-mod-elite" id="matrix-limit-elite" style="font-weight: 700; color: #a78bfa;">Hasta 500 agencias</td>
               </tr>
               <tr data-mod="Inicio">
                 <td class="mod-name">Inicio, Tablero Ejecutivo y Métricas en Vivo</td>
@@ -1378,9 +1612,32 @@
     </div>
   </div>
 
+  <!-- Lightbox Modal para Ver Pantallas en Alta Resolución -->
+  <div class="screen-lightbox" id="screen-lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de Pantallas">
+    <div class="screen-lightbox-content">
+      <div class="screen-lightbox-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.1rem;">🖥️</span>
+          <div>
+            <h4 id="lightbox-title" style="color: #fff; font-size: 0.95rem; margin: 0;">Captura de Sistema en Producción</h4>
+            <span id="lightbox-desc" style="color: #94a3b8; font-size: 0.76rem;">Multibanca Express - Operatividad en Vivo</span>
+          </div>
+        </div>
+        <button class="screen-lightbox-close" id="lightbox-close" aria-label="Cerrar modal">✕</button>
+      </div>
+      <div class="screen-lightbox-body">
+        <img id="lightbox-img" src="" alt="Captura ampliada de Multibanca Express">
+      </div>
+      <div class="screen-lightbox-footer">
+        <span style="color: #22c55e;">● Sistema Activo en crm.multibancaexpress.com y taq.multibancaexpress.com</span>
+        <span style="color: #94a3b8;">Presione ESC o haga clic fuera para cerrar</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
-  <script src="js/app.js?v=3.6"></script>
-  <script src="js/calculator.js?v=3.6"></script>
-  <script src="js/leads.js?v=3.6"></script>
+  <script src="js/app.js?v=4.0"></script>
+  <script src="js/calculator.js?v=4.0"></script>
+  <script src="js/leads.js?v=4.0"></script>
 </body>
 </html>

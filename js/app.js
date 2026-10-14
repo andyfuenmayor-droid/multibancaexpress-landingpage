@@ -85,4 +85,63 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 6. Interactive Hero Real Screens Switcher
+  const screenTabBtns = document.querySelectorAll('.hero-screen-tab-btn');
+  const screenViewItems = document.querySelectorAll('.screen-view-item');
+
+  screenTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const screenId = btn.getAttribute('data-screen');
+      screenTabBtns.forEach(b => b.classList.remove('active'));
+      screenViewItems.forEach(v => v.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetView = document.getElementById(`screen-view-${screenId}`);
+      if (targetView) {
+        targetView.classList.add('active');
+      }
+    });
+  });
+
+  // 7. Lightbox Modal for Real Production Screens
+  const lightbox = document.getElementById('screen-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  window.openScreenLightbox = function(src, title, desc) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    if (lightboxTitle) lightboxTitle.textContent = title || 'Captura de Sistema en Producción';
+    if (lightboxDesc) lightboxDesc.textContent = desc || 'Multibanca Express - Operatividad en Vivo';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeScreenLightbox = function() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', window.closeScreenLightbox);
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        window.closeScreenLightbox();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+      window.closeScreenLightbox();
+    }
+  });
 });
+
